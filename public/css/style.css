@@ -1,0 +1,239 @@
+body {
+  padding: 0;
+  margin: 0 ;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  padding-top: 5px;
+}
+
+header,
+footer {
+  height: 50px;
+  background: #d6e9dd;
+  margin: 0;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+/* とぷが */
+.top-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-head > div {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.add {
+  line-height: 50px;
+  margin-right: 10px;
+  padding: 0 20px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  background: #97e4b1;
+}
+.add:hover {
+  background: #74d193;
+}
+
+.main1 {
+  padding: 10px 10px 30px 20px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.big {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+  padding: 0 5px;
+}
+
+.img > img {
+  margin-top: 50px;
+  height: 200px; 
+  background: #f0f0f0;
+}
+
+.content > p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.main2 {
+  border-bottom: 1px dotted rgb(219, 219, 219);
+}
+
+/* 登録============================================================== */
+.alcohol-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 0 0 20px 0;
+  margin: 0 10px;
+}
+
+.alcohol-type > p,
+.alcohol-ml > p,
+.alcohol-value > p,
+.alcohol-kcal > p,
+.alcohol-percent > p {
+  padding: 10px 0;
+}
+
+.alcohol-ml > p,
+.alcohol-value > p,
+.alcohol-kcal > p,
+.alcohol-percent > p {
+  border-top: 2px solid rgb(213, 235, 243);
+}
+
+.alcohol-value,
+.alcohol-kcal {
+  margin-bottom: 20px;
+}
+
+input[type=radio] {
+  display: none; 
+}
+
+input[type="radio"]:checked + label {
+  background: rgb(228, 228, 228);
+  color: #ffffff;
+}
+
+label {
+  display: inline-block;
+  font-size: 10px;
+  margin: 10px 5px;
+  width: 90px;
+  height: 90px;
+  padding: 0 5px;
+  text-align: center; 
+  cursor: pointer; 
+  border: 2px solid rgb(121, 121, 121);
+  border-radius: 5px; 
+}
+
+input[type=text] {
+  height: 20px;
+  width: 40%;
+  border: 1px solid #d4d1d1;
+}
+
+.button,
+.buttonA {
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  color:white;
+  display: block;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  margin: 30px auto;
+  font-size: 20px;
+  background: rgb(175, 212, 195);
+  box-shadow: 0 4px rgb(119, 148, 135);
+}
+
+.buttonA {
+  border-style: none;
+  margin-top: 60px;
+  background: rgb(112, 226, 173);
+  box-shadow: 0 4px rgb(88, 163, 128);
+}
+
+.button:active,
+.buttonA:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+/* 一覧 ================================== */
+.container {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.table-head {
+  display: flex;
+  background-color: #97e4b1;
+  border-radius: 2px 2px 0 0;
+  height: 44px;
+  font-size: 16px;
+  line-height: 46px;
+  color: #ffffff;
+}
+
+.id-column {
+  width: 30px;
+  text-align: center;
+}
+
+.table-body li {
+  height: 72px;
+  border: 1px solid #f0f4f9;
+  border-top: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-body .id-column {
+  font-size: 16px;
+  color: #b8cde4;
+}
+
+.table-body {
+  font-size: 14px;
+  font-weight: 500;
+  color: #48515e;
+}
+
+.item-data, .table-head {
+  display: grid;
+  grid-template-columns: repeat(5, 40px);
+  gap: 20px;
+}
+
+.item-menu {
+  display: flex;
+}
+
+.item-menu form {
+  width: 60px;
+  text-align: center;
+}
+
+.item-menu form input {
+  font-size: 16px;
+  color: #a6a8aa;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}

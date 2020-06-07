@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>app</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header>登録</header>
+    <form action="/create" method="post" class="alcohol-form">
+      <div class="alcohol-type">
+        <p>お酒の種類</p>
+          <input type="radio" name="alcoholName" value="beel" id="beel"><label for="beel">ビール</label>
+          <input type="radio" name="alcoholName" value="chuhai" id="chuhai"><label for="chuhai">チューハイ</label>
+          <input type="radio" name="alcoholName" value="nihonsyu" id="nihonsyu"><label for="nihonsyu">日本酒</label>
+          <input type="radio" name="alcoholName" value="wiskey" id="wiskey"><label for="wiskey">ウイスキー</label>
+          <input type="radio" name="alcoholName" value="shochu" id="shochu"><label for="shochu">焼酎</label>
+          <input type="radio" name="alcoholName" value="wine" id="wine"><label for="wine">ワイン</label>
+          <input type="radio" name="alcoholName" value="etc" id="etc"><label for="etc">その他</label>
+      </div>
+  
+      <div class="alcohol-ml">
+        <p>お酒の量</p>
+          <input type="radio" name="ml" value="30" id="30ml"><label for="30ml">30ml</label>
+          <input type="radio" name="ml" value="60" id="60ml"><label for="60ml">60ml</label>
+          <input type="radio" name="ml" value="110" id="110ml"><label for="110ml">110ml</label>
+          <input type="radio" name="ml" value="180" id="180ml"><label for="180ml">180ml</label>
+          <input type="radio" name="ml" value="350" id="350ml"><label for="350ml">350ml</label>
+          <input type="radio" name="ml" value="500" id="500ml"><label for="500ml">500ml</label>
+      </div>
+
+      <div class="alcohol-value">
+        <p>お酒の金額</p>
+          <input type="text" name="alcoholValue">円
+      </div>
+
+      <div class="alcohol-kcal">
+        <p>お酒のカロリー</p>
+          <input type="text" name="alcoholKcal">kcal
+      </div>
+
+      <div class="alcohol-percent">
+        <p>お酒の度数</p>
+          <input type="text" name="alcoholPercent">%
+      </div>
+
+      <input type="submit" class="buttonA" value="登録" >
+      <a href="/" class="button">もどる</a>
+    </form>
+
+    
+    <footer></footer>
+  </body>
+</html>

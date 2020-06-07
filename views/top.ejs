@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>app</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header class="top-head">
+      <div>
+        <% var today = new Date() %>
+        <%= today.getFullYear() %>年 <%= today.getMonth() %>月<%= today.getDate() %>日
+      </div>
+      <a href="/register" class="add">追加 +</a>
+      
+    </header>
+    <section class="main1">
+      <div class="content">
+        <% 
+          var ml = 0;
+          var value = 0;
+          var kcal = 0;
+          alcohols.forEach(function (alcohol) {
+            ml += alcohol.ml;
+            value += alcohol.value;
+            kcal += alcohol.kcal;
+          });
+          var summl = ml;
+          var sumvalue = value;
+          var sumkcal = kcal;
+        %>
+
+        <p>総飲酒量<p><span class="big"><%= summl %></span> ml</p></p>
+        <p>総額<p><span class="big"><%= sumvalue %></span> 円</p></p>
+        <p>総カロリー量<p><span class="big"><%= sumkcal %></span> kcal</p></p>
+
+      </div>
+      <div class="img">
+        <img src="../images/food_agedashi_doufu.png">
+      </div>
+    </section>
+    <section class="main2">
+      <p>アルコールが抜けるまで…</p>
+      <p>あと<span></span></p>
+    </section>
+    <section>
+      <div class="container">
+        <div class="index-table-wrapper">
+          <div class="table-head">
+            <span class="id-column">ID</span>
+            <span class="type-column">種類</span>
+            <span class="ml-column">ml</span>
+            <span class="value-column">価格</span>
+            <span class="kcal-column">kcal</span>
+          </div>
+          <ul class="table-body">
+            <% alcohols.forEach(function(alcohol) { %>
+              <li>
+                <div class="item-data">
+                  <span class="id-column"><%= alcohol.id %></span>
+                  <span class="type-column"><%= alcohol.type %></span>
+                  <span class="ml-column"><%= alcohol.ml %></span>
+                  <span class="value-column"><%= alcohol.value %></span>
+                  <span class="kcal-column"><%= alcohol.kcal %></span>
+                </div>
+                <div class="item-menu">
+                  <form action="/delete/<%= alcohol.id %>" method="post">
+                    <input type="submit" value="削除">
+                  </form>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      
+      </div>
+    </section>
+    <footer></footer>
+  </body>
+</html>
