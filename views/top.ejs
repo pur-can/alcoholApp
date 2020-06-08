@@ -9,8 +9,8 @@
   <body>
     <header class="top-head">
       <div>
-        <% var today = new Date() %>
-        <%= today.getFullYear() %>年 <%= today.getMonth() %>月<%= today.getDate() %>日
+        <a href="/setting">＊</a>
+        本日の飲酒量
       </div>
       <a href="/register" class="add">追加 +</a>
       
@@ -21,7 +21,15 @@
           var ml = 0;
           var value = 0;
           var kcal = 0;
+          var alcoholTime = 0;
+          var alcoholg;
+          var alcoholism = 0;
+          
           alcohols.forEach(function (alcohol) {
+            alcoholg = alcohol.ml * alcohol.percent / 100 * 0.8;
+            alcoholTime += Math.round(alcoholg / 6, 1);
+            alcoholism += (alcohol.ml * alcohol.percent) / (833 * 60);
+
             ml += alcohol.ml;
             value += alcohol.value;
             kcal += alcohol.kcal;
@@ -37,12 +45,24 @@
 
       </div>
       <div class="img">
-        <img src="../images/food_agedashi_doufu.png">
+        <% if (alcoholism < 0.11) { %>
+          <p>ほろ酔い期</p>
+          <img src="../images/horoyoi.png">
+        <% } else if (alcoholism < 0.31) { %>
+          <p>酩酊期</p>
+          <img src="../images/meitei.png">
+        <% } else if (alcoholism < 0.41) { %>
+          <p>泥酔期</p>
+          <img src="../images/deisui.png">
+        <% } else { %>
+          <p>死</p>
+          <img src="">
+        <% } %>
       </div>
     </section>
     <section class="main2">
-      <p>アルコールが抜けるまで…</p>
-      <p>あと<span></span></p>
+      <p class="main2p">アルコールが抜けるまで…約<span class="big"><%= alcoholTime %></span>時間</p>
+ 
     </section>
     <section>
       <div class="container">

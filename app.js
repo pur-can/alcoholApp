@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const ejs = require('ejs');
 
-// テンプレートエンジンの指定
+// テンプレートエンジンの指
 app.set("view engine", "ejs");
 
 const mysql = require('mysql');
@@ -65,30 +65,9 @@ app.post('/create', function (req, res) {
   [alcohol],
   function (error, results) {
       res.redirect('/');
-      console.log(results);
   });
   connection.end();
 });
-
-//一覧
-// app.get('/new', function (req, res) {
-//   const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'dbuser01',
-//     password: '',
-//     database: 'alcohols',
-//   });
-//   connection.connect();
-  
-//   connection.query('SET @i := 0');
-//   connection.query('UPDATE alcohols SET id = (@i := @i + 1)');
-//   connection.query('SELECT * FROM alcohols', function (error, results) {
-//     res.render('new.ejs', {alcohols: results});
-//   });
-  
-  
-//   connection.end();
-// });
 
 //削除
 app.post('/delete/:id', function (req, res) {
@@ -106,5 +85,36 @@ app.post('/delete/:id', function (req, res) {
   });
   connection.end();
 });
+
+//設定
+app.get('/setting', function (req, res) {
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'dbuser01',
+    password: '',
+    database: 'alcohols',
+  });
+  connection.connect();
+  res.render('setting.ejs');
+  connection.end();
+});
+
+//ここが機能するかどうか 6/9
+// app.post('/set',  function (req, res) {
+//   const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'dbuser01',
+//     password: '',
+//     database: 'alcohols',
+//   });
+//   connection.connect();
+//   connection.query('ALTER TABLE alcohols ALTER COLUMN weight SET DEFAULT (?)',
+//   [req.body.weight],
+//   function (error, results) {
+//       res.redirect('/');
+//       console.log(results);
+//   });
+//   connection.end();
+// });
 
 app.listen(3000);

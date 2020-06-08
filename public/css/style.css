@@ -12,7 +12,6 @@ ul, li {
 
 p {
   margin: 0;
-  padding-top: 5px;
 }
 
 header,
@@ -26,7 +25,7 @@ footer {
   font-size: 20px;
 }
 
-/* とぷが */
+/* とぷが =-----------------=======================================*/
 .top-head {
   display: flex;
   justify-content: space-between;
@@ -53,10 +52,14 @@ footer {
 }
 
 .main1 {
-  padding: 10px 10px 30px 20px;
+  padding: 10px 10px 20px 10px;
   display: flex;
   justify-content: space-between;
-
+}
+.main2 {
+  padding: 10px 10px 30px 10px;
+  font-size: 15px;
+  border-bottom: 1px dotted rgb(219, 219, 219);
 }
 
 .big {
@@ -65,31 +68,47 @@ footer {
   color: red;
   padding: 0 5px;
 }
-
+.img, .content {
+  text-align: center;
+  margin-top: 10px;
+}
 .img > img {
-  margin-top: 50px;
-  height: 200px; 
+  width: 200px;
+  height: 300px; 
   background: #f0f0f0;
 }
 
 .content > p {
   font-size: 12px;
   margin-top: 5px;
+  padding-top: 5px;
 }
 
-.main2 {
-  border-bottom: 1px dotted rgb(219, 219, 219);
+.main2 > .main2p {
+  font-weight: bold;
+}
+.main2 > p {
+  text-align: center;
+  padding: 0;
 }
 
 /* 登録============================================================== */
 .alcohol-form {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-evenly; */
   text-align: center;
   padding: 0 0 20px 0;
   margin: 0 10px;
+}
+
+.type-wrapper,
+.ml-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .alcohol-type > p,
@@ -112,26 +131,40 @@ footer {
   margin-bottom: 20px;
 }
 
+.alcohol-type,
+.alcohol-ml {
+  padding-bottom: 20px;
+}
+
 input[type=radio] {
   display: none; 
 }
 
-input[type="radio"]:checked + label {
-  background: rgb(228, 228, 228);
-  color: #ffffff;
+.alcohol-type input[type="radio"]:checked + label img,
+.alcohol-ml input[type="radio"]:checked + label img{
+  background: #ffbf36;
 }
 
-label {
-  display: inline-block;
-  font-size: 10px;
-  margin: 10px 5px;
+.register-img {
+  padding: 4px;
   width: 90px;
   height: 90px;
-  padding: 0 5px;
-  text-align: center; 
-  cursor: pointer; 
-  border: 2px solid rgb(121, 121, 121);
-  border-radius: 5px; 
+}
+.wrapper {
+  padding: 5px;
+  width: 90px;
+
+  display: inline-block;
+  position: relative;
+}
+
+label > span {
+  font-size: 12px;
+  padding-bottom: 20px;
+}
+
+label > span > p {
+  font-size: 10px;
 }
 
 input[type=text] {
@@ -169,7 +202,7 @@ input[type=text] {
   transform: translateY(4px);
 }
 
-/* 一覧 ================================== */
+/* 一覧 ================================================================ */
 .container {
   margin: 0 auto;
   margin-top: 20px;
@@ -186,7 +219,6 @@ input[type=text] {
 }
 
 .id-column {
-  width: 30px;
   text-align: center;
 }
 
@@ -212,8 +244,8 @@ input[type=text] {
 
 .item-data, .table-head {
   display: grid;
-  grid-template-columns: repeat(5, 40px);
-  gap: 20px;
+  grid-template-columns: 30px 70px 50px 50px 50px;
+  gap: 15px;
 }
 
 .item-menu {
