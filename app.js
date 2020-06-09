@@ -6,115 +6,110 @@ const ejs = require('ejs');
 app.set("view engine", "ejs");
 
 const mysql = require('mysql');
-const connection = mysql.createConnection({
+var connection = mysql.createConnection({
   host: 'localhost',
   user: 'dbuser01',
   password: '',
   database: 'alcohols',
 });
-connection.connect();
+
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
-//トップ
+//スタート
 app.get('/', function(req, res) {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'dbuser01',
-    password: '',
-    database: 'alcohols',
-  });
-  connection.connect();
+  res.render('start.ejs');
+});
 
+//記録開始
+app.post('/timestart', function(req, res) {
+  
+  connection.query('SELECT end FROM timemanagement WHERE start =( SELECT MAX(start) FROM timemanagement) LIMIT 1', function(error, results) {
+    console.log(results);
+    if (results[0].end !== null) {
+      console.log('success');
+      connection.query('INSERT INTO timemanagement(start) VALUES (CAST(now() as datetime))');
+    } else {
+      console.log('failed');
+    };
+  });
+  connection.query('SELECT * FROM alcohols', function (error, results) {
+    
+    res.redirect('/top');
+    
+  });
+
+});
+
+//記録終わり
+app.post('/timeend', function(req, res) {
+ 
+  connection.query('UPDATE timemanagement SET end = CAST(now() as datetime) WHERE end IS NULL',  function (error, results) {
+    console.log(results);
+  });
+  connection.query('SELECT * FROM alcohols', function (error, results) {
+    res.render('start.ejs', {alcohols: results});
+  });
+  
+})
+
+//トップ
+app.get('/top', function(req, res) {
+  
   connection.query('SET @i := 0');
   connection.query('UPDATE alcohols SET id = (@i := @i + 1)');
-  connection.query('SELECT * FROM alcohols', function (error, results) {
+  connection.query('SELECT * FROM alcohols WHERE start = (SELECT MAX(start) FROM timemanagement)', function (error, results) {
     res.render('top.ejs', {alcohols: results});
   });
-  connection.end();
-  
 });
 
 //登録画面
 app.get('/register', function (req, res) {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'dbuser01',
-    password: '',
-    database: 'alcohols',
-  });
-  connection.connect();
   res.render('register.ejs');
-  connection.end();
 });
 
 //追加
 app.post('/create', function (req, res) {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'dbuser01',
-    password: '',
-    database: 'alcohols',
-  });
-  connection.connect();
-  
   const alcohol = [req.body.alcoholName, req.body.ml, req.body.alcoholValue, req.body.alcoholKcal, req.body.alcoholPercent];
-
-  connection.query('INSERT INTO alcohols(type, ml, value, kcal, percent) VALUES (?)',
+  connection.query('INSERT INTO alcohols(type, ml, value, kcal, percent, uptime) VALUES (?, CAST(now() as datetime))',
   [alcohol],
   function (error, results) {
-      res.redirect('/');
+    connection.query('SELECT * FROM alcohols', function (error, results) {
+      res.redirect('/top');
+    });
   });
-  connection.end();
+  connection.query('UPDATE alcohols SET start = (SELECT MAX(start) FROM timemanagement LIMIT 1) WHERE id IN (SELECT * FROM (SELECT MAX(id) FROM alcohols LIMIT 1) AS P)');
 });
 
 //削除
 app.post('/delete/:id', function (req, res) {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'dbuser01',
-    password: '',
-    database: 'alcohols',
-  });
-  connection.connect();
   connection.query('DELETE FROM alcohols WHERE id = ?',
   [req.params.id],
   function (error, results) {
-    res.redirect('/');
+    res.redirect('/top');
   });
-  connection.end();
 });
 
 //設定
 app.get('/setting', function (req, res) {
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'dbuser01',
-    password: '',
-    database: 'alcohols',
-  });
-  connection.connect();
   res.render('setting.ejs');
-  connection.end();
 });
 
-//ここが機能するかどうか 6/9
-// app.post('/set',  function (req, res) {
-//   const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'dbuser01',
-//     password: '',
-//     database: 'alcohols',
-//   });
-//   connection.connect();
-//   connection.query('ALTER TABLE alcohols ALTER COLUMN weight SET DEFAULT (?)',
-//   [req.body.weight],
-//   function (error, results) {
-//       res.redirect('/');
-//       console.log(results);
-//   });
-//   connection.end();
-// });
+app.post('/set',  function (req, res) {
+  console.log(req.body.weight);
+  connection.query('ALTER TABLE alcohols ALTER COLUMN weight SET DEFAULT ?',
+    [req.body.weight],
+    function (error, results) {
+      res.redirect('/top');
+    });
+});
+
+//一覧画面
+app.post('/index', function (req, res) {
+  connection.query('SELECT * FROM alcohols' ,function (error, results) {
+    res.render('index.ejs', {alcohols: results});
+  });
+});
 
 app.listen(3000);

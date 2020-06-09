@@ -5,11 +5,16 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <title>app</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
   <body>
-    <form action="/set" method="post">
-      <input type="text" name="weight">kg
-    </form>
-    <a href="/" class="button">もどる</a>
+    <header>体重</header>
+    <div class="weight-main">
+      <form action="/set" method="post">
+        <input type="text" name="weight"> kg
+        <input type="submit" class="buttonA" value="登録" >
+      </form>
+      <a href="/top" class="button">もどる</a>
+    </div>
   </body>
 </html>

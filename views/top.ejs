@@ -5,11 +5,13 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <title>app</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
   <body>
     <header class="top-head">
       <div>
-        <a href="/setting">＊</a>
+        <a href="/setting"><i class="fas fa-cog"></i></a>
         本日の飲酒量
       </div>
       <a href="/register" class="add">追加 +</a>
@@ -17,31 +19,45 @@
     </header>
     <section class="main1">
       <div class="content">
+        
         <% 
-          var ml = 0;
-          var value = 0;
-          var kcal = 0;
-          var alcoholTime = 0;
-          var alcoholg;
-          var alcoholism = 0;
-          
-          alcohols.forEach(function (alcohol) {
-            alcoholg = alcohol.ml * alcohol.percent / 100 * 0.8;
-            alcoholTime += Math.round(alcoholg / 6, 1);
-            alcoholism += (alcohol.ml * alcohol.percent) / (833 * 60);
+          try {
+            var ml = 0;
+            var value = 0;
+            var kcal = 0;
+            var alcoholTime = 0;
+            var alcoholg;
+            var alcoholism = 0;
+            
+            alcohols.forEach(function (alcohol) {
+              alcoholg = alcohol.ml * alcohol.percent / 100 * 0.8;
+              alcoholTime += Math.round((alcoholg / (alcohol.weight / 10)) * 100)/ 100;
+              alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
+              ml += alcohol.ml;
+              value += alcohol.value;
+              kcal += alcohol.kcal;
+            });
 
-            ml += alcohol.ml;
-            value += alcohol.value;
-            kcal += alcohol.kcal;
-          });
-          var summl = ml;
-          var sumvalue = value;
-          var sumkcal = kcal;
+            var summl = ml;
+            var sumvalue = value;
+            var sumkcal = kcal;
+            
+            var now = new Date().getTime();
+            var firstAlcohol = new Date(alcohols[0].uptime);
+            alcoholTime -= Math.round((((now - firstAlcohol) / 1000) / 3600) * 100)/ 100;
+          } catch(e) {
+            console.log(e.message);
+          }
         %>
-
-        <p>総飲酒量<p><span class="big"><%= summl %></span> ml</p></p>
-        <p>総額<p><span class="big"><%= sumvalue %></span> 円</p></p>
-        <p>総カロリー量<p><span class="big"><%= sumkcal %></span> kcal</p></p>
+        <div>
+          <p>総飲酒量<p><span class="big"><%= summl %></span> ml</p></p>
+        </div>
+        <div>
+          <p>総額<p><span class="big"><%= sumvalue %></span> 円</p></p>
+        </div>
+        <div>
+          <p>総カロリー量<p><span class="big"><%= sumkcal %></span> kcal</p></p>
+        </div>
 
       </div>
       <div class="img">
@@ -62,8 +78,14 @@
     </section>
     <section class="main2">
       <p class="main2p">アルコールが抜けるまで…約<span class="big"><%= alcoholTime %></span>時間</p>
- 
+      <% try { %>
+        <p>（<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)</p>
+      <% } catch(e) { console.log(e.message); }%>
+
+      
+
     </section>
+    <form action="/timeend" method="post"><input type="submit" class="buttonA" value="飲み終わる"></form>
     <section>
       <div class="container">
         <div class="index-table-wrapper">
