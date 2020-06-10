@@ -21,17 +21,19 @@
       <div class="content">
         
         <% 
-          try {
-            var ml = 0;
-            var value = 0;
-            var kcal = 0;
-            var alcoholTime = 0;
-            var alcoholg;
-            var alcoholism = 0;
-            
+        var ml = 0;
+        var value = 0;
+        var kcal = 0;
+        var alcoholTime = 0;
+        var alcoholg;
+        var alcoholism = 0;
+        
+        try {
             alcohols.forEach(function (alcohol) {
-              alcoholg = alcohol.ml * alcohol.percent / 100 * 0.8;
-              alcoholTime += Math.round((alcoholg / (alcohol.weight / 10)) * 100)/ 100;
+              alcoholg = alcohol.ml * (alcohol.percent / 100) * 0.8;
+              var ti = alcoholg / (alcohol.weight / 10);
+              alcoholTime = alcoholTime + ti;
+
               alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
               ml += alcohol.ml;
               value += alcohol.value;
@@ -44,7 +46,9 @@
             
             var now = new Date().getTime();
             var firstAlcohol = new Date(alcohols[0].uptime);
-            alcoholTime -= Math.round((((now - firstAlcohol) / 1000) / 3600) * 100)/ 100;
+            var ttest = (((now - firstAlcohol) / 1000) / 3600);
+            
+            alcoholTime = alcoholTime - ttest;
           } catch(e) {
             console.log(e.message);
           }
@@ -61,7 +65,10 @@
 
       </div>
       <div class="img">
-        <% if (alcoholism < 0.11) { %>
+        <% if (alcoholism === 0) { %>
+          <p>しらふ</p>
+          <img src="">
+        <% }else if (alcoholism < 0.11) { %>
           <p>ほろ酔い期</p>
           <img src="../images/horoyoi.png">
         <% } else if (alcoholism < 0.31) { %>
@@ -77,15 +84,17 @@
       </div>
     </section>
     <section class="main2">
-      <p class="main2p">アルコールが抜けるまで…約<span class="big"><%= alcoholTime %></span>時間</p>
+      <p class="main2p">アルコールが抜けるまで…約
+        <span class="big"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %>
+          <%= alcoholTime %>
+        </span>時間
+      </p>
       <% try { %>
-        <p>（<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)</p>
-      <% } catch(e) { console.log(e.message); }%>
-
-      
-
+        <p>
+        （<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)
+        </p>
+      <% } catch(e) { } %>
     </section>
-    <form action="/timeend" method="post"><input type="submit" class="buttonA" value="飲み終わる"></form>
     <section>
       <div class="container">
         <div class="index-table-wrapper">
@@ -115,9 +124,8 @@
             <% }) %>
           </ul>
         </div>
-      
       </div>
     </section>
-    <footer></footer>
+    <form action="/timeend" method="post"><input type="submit" class="buttonA" value="飲み終わる"></form>
   </body>
 </html>

@@ -64,16 +64,15 @@ footer {
   justify-content: space-between;
 }
 .main2 {
-  padding: 10px 10px 30px 10px;
+  padding: 10px 10px 20px 10px;
   font-size: 15px;
-  border-bottom: 1px dotted rgb(219, 219, 219);
+  /* border-bottom: 1px dotted rgb(219, 219, 219); */
 }
 
 .big {
   font-size: 30px;
-
   font-family: 'arial black';
-  color: rgb(241, 68, 68);
+  color: rgb(238, 103, 103);
   padding: 0 5px;
 }
 .img, .content {
@@ -300,7 +299,7 @@ input[type=text] {
 /* トップのトップ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .start-main {
   height: 400px;
-  background: tomato;
+  
 }
 
 .start-button {
@@ -316,4 +315,36 @@ input[type=text] {
   background: rgb(175, 212, 195);
   box-shadow: 0 4px rgb(119, 148, 135);
   border-style: none;
+}
+/* 一覧＋α＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.list-header {
+  height: 50px;
+  background: rgb(84, 116, 97);
+  margin: 0;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.list-container {
+  margin: 0 auto;
+}
+
+.alcohol-list {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(108, 165, 134);
+  border-radius: 2px 2px 0 0;
+  height: 44px;
+  font-size: 16px;
+  line-height: 46px;
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.plus {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }

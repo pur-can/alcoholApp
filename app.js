@@ -91,9 +91,20 @@ app.post('/delete/:id', function (req, res) {
   });
 });
 
+//一覧から削除
+app.post('/deleteIndex/:id', function (req, res) {
+  connection.query('DELETE FROM alcohols WHERE id = ?',
+  [req.params.id],
+  function (error, results) {
+    res.redirect('/index');
+  });
+});
+
 //設定
 app.get('/setting', function (req, res) {
-  res.render('setting.ejs');
+  connection.query('SELECT * FROM alcohols WHERE id IN (SELECT * FROM (SELECT MAX(id) FROM alcohols) AS P) LIMIT 1', function (error, results) {
+    res.render('setting.ejs', {alcohols: results});
+  });
 });
 
 app.post('/set',  function (req, res) {
@@ -106,7 +117,9 @@ app.post('/set',  function (req, res) {
 });
 
 //一覧画面
-app.post('/index', function (req, res) {
+app.get('/index', function (req, res) {
+  connection.query('SET @i := 0');
+  connection.query('UPDATE alcohols SET id = (@i := @i + 1)');
   connection.query('SELECT * FROM alcohols' ,function (error, results) {
     res.render('index.ejs', {alcohols: results});
   });
