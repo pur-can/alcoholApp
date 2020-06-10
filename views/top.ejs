@@ -8,11 +8,45 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
-  <body>
-    <header class="top-head">
+  <% 
+  var ml = 0;
+  var value = 0;
+  var kcal = 0;
+  var alcoholTime = 0;
+  var alcoholg;
+  var alcoholism = 0;
+  
+  try {
+      alcohols.forEach(function (alcohol) {
+        alcoholg = alcohol.ml * (alcohol.percent / 100) * 0.8;
+        var ti = alcoholg / (alcohol.weight / 10);
+        alcoholTime = alcoholTime + ti;
+
+        alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
+        ml += alcohol.ml;
+        value += alcohol.value;
+        kcal += alcohol.kcal;
+      });
+
+      var summl = ml;
+      var sumvalue = value;
+      var sumkcal = kcal;
+      
+      var now = new Date().getTime();
+      var firstAlcohol = new Date(alcohols[0].uptime);
+      var ttest = (((now - firstAlcohol) / 1000) / 3600);
+      
+      alcoholTime = alcoholTime - ttest;
+    } catch(e) {
+      console.log(e.message);
+    }
+    console.log(alcoholism);
+  %>
+  <body class="<% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
+    <header class="top-head <% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
       <div>
         <a href="/setting"><i class="fas fa-cog"></i></a>
-        本日の飲酒量
+        今回の飲酒記録
       </div>
       <a href="/register" class="add">追加 +</a>
       
@@ -20,57 +54,24 @@
     <section class="main1">
       <div class="content">
         
-        <% 
-        var ml = 0;
-        var value = 0;
-        var kcal = 0;
-        var alcoholTime = 0;
-        var alcoholg;
-        var alcoholism = 0;
-        
-        try {
-            alcohols.forEach(function (alcohol) {
-              alcoholg = alcohol.ml * (alcohol.percent / 100) * 0.8;
-              var ti = alcoholg / (alcohol.weight / 10);
-              alcoholTime = alcoholTime + ti;
-
-              alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
-              ml += alcohol.ml;
-              value += alcohol.value;
-              kcal += alcohol.kcal;
-            });
-
-            var summl = ml;
-            var sumvalue = value;
-            var sumkcal = kcal;
-            
-            var now = new Date().getTime();
-            var firstAlcohol = new Date(alcohols[0].uptime);
-            var ttest = (((now - firstAlcohol) / 1000) / 3600);
-            
-            alcoholTime = alcoholTime - ttest;
-          } catch(e) {
-            console.log(e.message);
-          }
-        %>
         <div>
-          <p>総飲酒量<p><span class="big"><%= summl %></span> ml</p></p>
+          <p>総飲酒量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= summl %></span> ml</p></p>
         </div>
         <div>
-          <p>総額<p><span class="big"><%= sumvalue %></span> 円</p></p>
+          <p>総額<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumvalue %></span> 円</p></p>
         </div>
         <div>
-          <p>総カロリー量<p><span class="big"><%= sumkcal %></span> kcal</p></p>
+          <p>総カロリー量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumkcal %></span> kcal</p></p>
         </div>
 
       </div>
       <div class="img">
         <% if (alcoholism === 0) { %>
           <p>しらふ</p>
-          <img src="">
+          <img src="../images/sirahu.jpg">
         <% }else if (alcoholism < 0.11) { %>
           <p>ほろ酔い期</p>
-          <img src="../images/horoyoi.png">
+          <img src="../images/horoyoi.jpg">
         <% } else if (alcoholism < 0.31) { %>
           <p>酩酊期</p>
           <img src="../images/meitei.png">
@@ -78,18 +79,18 @@
           <p>泥酔期</p>
           <img src="../images/deisui.png">
         <% } else { %>
-          <p>死</p>
-          <img src="">
+          <p></p>
+          <img src="../images/black.png">
         <% } %>
       </div>
     </section>
     <section class="main2">
       <p class="main2p">アルコールが抜けるまで…約
-        <span class="big"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %>
-          <%= alcoholTime %>
+        <span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %>
         </span>時間
       </p>
       <% try { %>
+        <% console.log(firstAlcohol.getDate()); %>
         <p>
         （<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)
         </p>
@@ -98,7 +99,7 @@
     <section>
       <div class="container">
         <div class="index-table-wrapper">
-          <div class="table-head">
+          <div class="table-head <% if (alcoholism > 0.40) { %><%= 'dead-red' %><% } %>">
             <span class="id-column">ID</span>
             <span class="type-column">種類</span>
             <span class="ml-column">ml</span>
@@ -107,7 +108,7 @@
           </div>
           <ul class="table-body">
             <% alcohols.forEach(function(alcohol) { %>
-              <li>
+              <li  class="bgc <% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
                 <div class="item-data">
                   <span class="id-column"><%= alcohol.id %></span>
                   <span class="type-column"><%= alcohol.type %></span>
@@ -126,6 +127,6 @@
         </div>
       </div>
     </section>
-    <form action="/timeend" method="post"><input type="submit" class="buttonA" value="飲み終わる"></form>
+    <form action="/timeend" method="post"><input type="submit" class="button register-button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散"></form>
   </body>
 </html>

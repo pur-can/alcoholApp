@@ -9,13 +9,17 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
   <body>
-    <header>飲酒管理アプリ</header>
-    <main>
-      <div class="start-main"></div>
+    <header class="start-header">AlcoholRecorder</header>
+    <main class="start">
+      <div class="start-main">
+        <img src="../images/topuga.png" class="topuga">
+        <img src="../images/topuga2.jpg" class="topuga2">
+      </div>
+      <section class="start-buttons">
+        <form action="/timestart" method="post"><input type="submit" class="start-button kanpai" value="乾杯！"></form>
+        <form action="/index" method="get"><input type="submit" class="start-button list-button" value="一覧"></form>
+      </section>
     </main>
-    <section class="start-buttons">
-      <form action="/timestart" method="post"><input type="submit" class="start-button" value="乾杯"></form>
-      <form action="/index" method="get"><input type="submit" class="start-button" value="一覧"></form>
-    </section>
+    
   </body>
 </html>

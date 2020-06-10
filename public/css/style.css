@@ -2,7 +2,7 @@ body {
   padding: 0;
   margin: 0 ;
   box-sizing: border-box;
-  font-family: 'Noto Sans JP','游ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+  font-family: 'Hiragino Kaku Gothic Pro', 'Noto Sans JP','游ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
   color: rgb(58, 55, 55);
 }
 
@@ -18,13 +18,13 @@ p {
 
 header,
 footer {
-  height: 50px;
+  height: 70px;
   background: rgb(169, 236, 191);
   margin: 0;
   text-align: center;
   color: white;
-  line-height: 50px;
-  font-size: 20px;
+  line-height: 70px;
+  font-size: 22px;
 }
 
 /* とぷが =-----------------=======================================*/
@@ -35,16 +35,17 @@ footer {
 
 .top-head > div {
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .fa-cog {
   color: #FCFFC6;
-  margin-right: 10px;
+  margin-right: 30px;
+  margin-left: 10px;
 }
 
 .add {
-  line-height: 50px;
+  line-height: 70px;
   margin-right: 10px;
   padding: 0 20px;
   display: block;
@@ -54,19 +55,16 @@ footer {
   font-weight: bold;
   background: rgb(106, 101, 124);
 }
-.add:hover {
-  background: rgb(84, 80, 102);
-}
 
 .main1 {
   padding: 10px 10px 20px 10px;
   display: flex;
   justify-content: space-between;
 }
+
 .main2 {
   padding: 10px 10px 20px 10px;
   font-size: 15px;
-  /* border-bottom: 1px dotted rgb(219, 219, 219); */
 }
 
 .big {
@@ -75,6 +73,7 @@ footer {
   color: rgb(238, 103, 103);
   padding: 0 5px;
 }
+
 .img, .content {
   text-align: center;
   margin-top: 10px;
@@ -115,6 +114,7 @@ footer {
 }
 .main2p > span {
   vertical-align: -4px;
+  padding-left: 10px;
 }
 
 /* 登録============================================================== */
@@ -170,11 +170,11 @@ input[type=radio] {
   padding: 4px;
   width: 90px;
   height: 90px;
+  background-color: white ;
 }
 .wrapper {
   padding: 5px;
   width: 90px;
-
   display: inline-block;
   position: relative;
 }
@@ -193,12 +193,7 @@ input[type=text] {
   width: 40%;
   border: 1px solid #d4d1d1;
 }
-
-.button,
-.buttonA {
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
+.button {
   color:white;
   display: block;
   border-radius: 4px;
@@ -206,20 +201,33 @@ input[type=text] {
   text-align: center;
   margin: 30px auto;
   font-size: 20px;
+}
+
+.return {
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
   background: rgb(175, 212, 195);
   box-shadow: 0 4px rgb(119, 148, 135);
 }
 
-.buttonA {
+.register-button {
+  width: 130px;
+  height: 60px;
+  line-height: 60px;
   border-style: none;
   margin-top: 60px;
-  background: rgb(112, 226, 173);
-  box-shadow: 0 4px rgb(88, 163, 128);
+  background: rgb(105, 228, 167);
+  box-shadow: 0 4px rgb(81, 168, 125);
   font-family: 'Noto Sans JP','游ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 
-.button:active,
-.buttonA:active {
+.oaiso {
+  background: rgb(141, 141, 141);
+  box-shadow: 0 4px rgb(78, 78, 78);
+}
+
+.button:active {
   box-shadow: none;
   transform: translateY(4px);
 }
@@ -246,7 +254,7 @@ input[type=text] {
 
 .table-body li {
   height: 72px;
-  border: 1px solid #f0f4f9;
+  border: 1px solid #e0e1e2;
   border-top: none;
   display: flex;
   justify-content: space-between;
@@ -297,37 +305,97 @@ input[type=text] {
   text-align: center;
 }
 /* トップのトップ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
-.start-main {
-  height: 400px;
-  
+.start-header {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  letter-spacing: 1px;
+  font-size: 22px;
+  font-family : 'Hiragino Kaku Gothic Pro';
+  font-weight: bold;
+  position: fixed;
+  z-index: 10;
+  color: rgb(142, 140, 151);
+  background: white;
+  box-shadow: 0 0 3px 1px white;
+} 
+.start {
+  position: relative;
 }
-
+.start-main {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+} 
+.start-main > img {
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+}
+.topuga {
+  background-color: white;
+  height: 300px;
+}
 .start-button {
+  position: absolute;
   padding: 10px 40px;
   line-height: 50px;
-  color:white;
   display: block;
-  border-radius: 4px;
   text-decoration: none;
   text-align: center;
-  margin: 30px auto;
+  margin: 0 auto;
   font-size: 20px;
-  background: rgb(175, 212, 195);
-  box-shadow: 0 4px rgb(119, 148, 135);
   border-style: none;
+  font-weight: bold;
+}
+
+.kanpai {
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 70px;
+  border-radius: 10px;
+  color:#ffffff;
+  background: #ffb81e;
+  box-shadow: 0 0 2px 2px #ffffffc4;
+  top: 280px;
+  bottom: 0;
+  right: 0;
+  left: 0px;
+}
+.kanpai:active {
+  background: #da9d1a;
+}
+
+.list-button {
+  width: 100%;
+  height: 80px;
+  color:rgb(81, 79, 88);
+  background: #ffffffc7;
+  box-shadow: 0 0 2px 2px #ffffffc7;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 /* 一覧＋α＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .list-header {
-  height: 50px;
-  background: rgb(84, 116, 97);
+  height: 70px;
+  width: 100%;
+  background: rgba(92, 92, 92, 0.829);
+  box-shadow: 1px 0 3px 3px rgba(92, 92, 92, 0.829);
   margin: 0;
   text-align: center;
-  color: white;
-  line-height: 50px;
-  font-size: 20px;
+  color: rgb(255, 255, 255);
+  line-height: 70px;
+  font-size: 22px;
+  position: fixed;
+  z-index: 10;
 }
 
 .list-container {
+  padding-top: 70px;
   margin: 0 auto;
 }
 
@@ -347,4 +415,35 @@ input[type=text] {
   color: white;
   font-size: 20px;
   font-weight: bold;
+}
+
+.bgc:nth-child(odd) {
+  background-color: rgb(238, 238, 238)
+}
+
+/* 死＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.dead {
+  background: black;
+  color: red;
+  font-family: 'Yu Mincho';
+}
+.table-body > .dead {
+  background: black;
+  color: red;
+  font-family: 'Yu Mincho';
+}
+.dead-red {
+  background: red;
+  color: black;
+  font-family: 'Yu Mincho';
+}
+.dead-button {
+  color: black;
+  background: red;
+  box-shadow: 0 4px rgb(146, 31, 31);
+  font-family: 'Yu Mincho';
+}
+.dead-color {
+  color: red;
+  font-family: 'Yu Mincho';
 }
