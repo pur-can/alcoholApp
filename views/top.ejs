@@ -128,5 +128,9 @@
       </div>
     </section>
     <form action="/timeend" method="post"><input type="submit" class="button register-button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散"></form>
+    <ul class="explanation">
+      <li>※一時間に分解できるアルコール量は<span>(体重（kg）x 0.1)</span>、分解にかかる時間は<span>(摂取した純アルコール量(g)/ 一時間に分解できるアルコール量)</span>で計算しています。</li>
+      <li>※酔いの状態を計るためのアルコール血中濃度は<span>(アルコール度数(%)x 容量(ml)/ (体重(kg)x 833))</span>で計算しています。</li>
+    </ul>
   </body>
 </html>

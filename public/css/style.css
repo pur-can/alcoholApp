@@ -19,7 +19,7 @@ p {
 header,
 footer {
   height: 70px;
-  background: rgb(169, 236, 191);
+  background: linear-gradient(rgb(135, 214, 161), rgb(187, 236, 187));
   margin: 0;
   text-align: center;
   color: white;
@@ -53,7 +53,7 @@ footer {
   cursor: pointer;
   color: white;
   font-weight: bold;
-  background: rgb(106, 101, 124);
+  background: linear-gradient(rgb(92, 87, 109), rgb(106, 101, 124));
 }
 
 .main1 {
@@ -115,6 +115,15 @@ footer {
 .main2p > span {
   vertical-align: -4px;
   padding-left: 10px;
+}
+
+.explanation {
+  font-size: 10px;
+  color: #545557;
+  margin: 10px 30px; 
+}
+.explanation > li > span {
+  color: rgb(202, 53, 53);
 }
 
 /* 登録============================================================== */
@@ -207,7 +216,7 @@ input[type=text] {
   width: 120px;
   height: 50px;
   line-height: 50px;
-  background: rgb(175, 212, 195);
+  background: linear-gradient(rgb(159, 192, 177), rgb(175, 212, 195));
   box-shadow: 0 4px rgb(119, 148, 135);
 }
 
@@ -217,13 +226,13 @@ input[type=text] {
   line-height: 60px;
   border-style: none;
   margin-top: 60px;
-  background: rgb(105, 228, 167);
+  background: linear-gradient(rgb(105, 228, 167), rgb(140, 255, 179));
   box-shadow: 0 4px rgb(81, 168, 125);
   font-family: 'Noto Sans JP','游ゴシック','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 
 .oaiso {
-  background: rgb(141, 141, 141);
+  background: linear-gradient( rgb(133, 133, 133),  rgb(156, 156, 156));
   box-shadow: 0 4px rgb(78, 78, 78);
 }
 
@@ -357,7 +366,7 @@ input[type=text] {
   height: 70px;
   border-radius: 10px;
   color:#ffffff;
-  background: #ffb81e;
+  background: linear-gradient( #ff9a15,  #ffb81e);
   box-shadow: 0 0 2px 2px #ffffffc4;
   top: 280px;
   bottom: 0;
@@ -383,7 +392,7 @@ input[type=text] {
 .list-header {
   height: 70px;
   width: 100%;
-  background: rgba(92, 92, 92, 0.829);
+  background: linear-gradient(rgba(51, 48, 48, 0.829), rgba(92, 92, 92, 0.829));
   box-shadow: 1px 0 3px 3px rgba(92, 92, 92, 0.829);
   margin: 0;
   text-align: center;
@@ -398,6 +407,10 @@ input[type=text] {
   padding-top: 70px;
   margin: 0 auto;
 }
+/* 
+.list-wrapper {
+  visibility: hidden;
+} */
 
 .alcohol-list {
   display: flex;
@@ -419,6 +432,15 @@ input[type=text] {
 
 .bgc:nth-child(odd) {
   background-color: rgb(238, 238, 238)
+}
+
+.gokei {
+  background: rgb(236, 234, 234);
+  padding: 0 20px;
+}
+.petit {
+  font-size: 20px;
+  color: rgb(226, 55, 92);
 }
 
 /* 死＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */

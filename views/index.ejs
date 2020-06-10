@@ -9,6 +9,11 @@
   <body>
     <header class="list-header">飲んだものたち</header>
     <main>
+      <%
+        var testSumMl = 0;
+        var testSumValue = 0;
+        var testSumKcal = 0;
+      %>
       <div class="list-container">
         <%
           var alcoholList = {};
@@ -30,33 +35,44 @@
                 <%= date.getMonth()%>月<%= date.getDate()%>日<%= date.getHours() %>時<%= date.getMinutes() %>分
               </div>
               <div class="plus"></div>
-              
             </div>
-            <div class="table-head">
-              <span class="id-column">ID</span>
-              <span class="type-column">種類</span>
-              <span class="ml-column">ml</span>
-              <span class="value-column">価格</span>
-              <span class="kcal-column">kcal</span>
+            <div class="list-wrapper" >
+              <div class="table-head">
+                <span class="id-column">ID</span>
+                <span class="type-column">種類</span>
+                <span class="ml-column">ml</span>
+                <span class="value-column">価格</span>
+                <span class="kcal-column">kcal</span>
+              </div>
+              <ul class="table-body">
+                <% alcoholList[key[i]].forEach(function(test) { %>
+                  <li>
+                    <div class="item-data">
+                      <span class="id-column"><%= test.id %></span>
+                      <span class="type-column"><%= test.type %></span>
+                      <span class="ml-column"><%= test.ml %></span>
+                      <span class="value-column"><%= test.value %></span>
+                      <span class="kcal-column"><%= test.kcal %></span>
+                      <%
+                        testSumMl += test.ml;
+                        testSumValue += test.value;
+                        testSumKcal += test.kcal;
+                      %>
+                    </div>
+                    <div class="item-menu">
+                      <form action="/deleteIndex/<%= test.id %>" method="post">
+                        <input type="submit" value="削除">
+                      </form>
+                    </div>
+                  </li>
+                <% }); %>
+                <li class="gokei">
+                  <div><p>総飲酒量<p class="petit"><%= testSumMl %>ml</p></p></div>
+                  <div><p>総額<p class="petit"><%= testSumValue %>円</p></p></div>
+                  <div><p>総カロリー<p class="petit"><%= testSumKcal %>kcal</p></p></div>
+                </li>
+              </ul>
             </div>
-          <ul class="table-body">
-            <% alcoholList[key[i]].forEach(function(test) { %>
-              <li>
-                <div class="item-data">
-                  <span class="id-column"><%= test.id %></span>
-                  <span class="type-column"><%= test.type %></span>
-                  <span class="ml-column"><%= test.ml %></span>
-                  <span class="value-column"><%= test.value %></span>
-                  <span class="kcal-column"><%= test.kcal %></span>
-                </div>
-                <div class="item-menu">
-                  <form action="/deleteIndex/<%= test.id %>" method="post">
-                    <input type="submit" value="削除">
-                  </form>
-                </div>
-              </li>
-            <% }); %>
-          </ul>
           <% } %>
         </div>
       
