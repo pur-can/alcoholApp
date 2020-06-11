@@ -13,7 +13,6 @@ var connection = mysql.createConnection({
   database: 'alcohols',
 });
 
-
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
@@ -24,7 +23,6 @@ app.get('/', function(req, res) {
 
 //記録開始
 app.post('/timestart', function(req, res) {
-  
   connection.query('SELECT end FROM timemanagement WHERE start =( SELECT MAX(start) FROM timemanagement) LIMIT 1', function(error, results) {
     console.log(results);
     if (results[0].end !== null) {
@@ -35,23 +33,20 @@ app.post('/timestart', function(req, res) {
     };
   });
   connection.query('SELECT * FROM alcohols', function (error, results) {
-    
     res.redirect('/top');
-    
   });
 
 });
 
 //記録終わり
 app.post('/timeend', function(req, res) {
- 
-  connection.query('UPDATE timemanagement SET end = CAST(now() as datetime) WHERE end IS NULL',  function (error, results) {
-    console.log(results);
-  });
+  connection.query('UPDATE timemanagement SET end = CAST(now() as datetime) WHERE end IS NULL',
+    function (error, results) {
+      console.log(results);
+    });
   connection.query('SELECT * FROM alcohols', function (error, results) {
     res.render('start.ejs', {alcohols: results});
   });
-  
 })
 
 //トップ
@@ -59,9 +54,10 @@ app.get('/top', function(req, res) {
   
   connection.query('SET @i := 0');
   connection.query('UPDATE alcohols SET id = (@i := @i + 1)');
-  connection.query('SELECT * FROM alcohols WHERE start = (SELECT MAX(start) FROM timemanagement)', function (error, results) {
-    res.render('top.ejs', {alcohols: results});
-  });
+  connection.query('SELECT * FROM alcohols WHERE start = (SELECT MAX(start) FROM timemanagement)',
+    function (error, results) {
+      res.render('top.ejs', {alcohols: results});
+    });
 });
 
 //登録画面

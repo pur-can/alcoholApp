@@ -15,6 +15,7 @@
   var alcoholTime = 0;
   var alcoholg;
   var alcoholism = 0;
+  var displayId = 0;
   
   try {
       alcohols.forEach(function (alcohol) {
@@ -31,12 +32,10 @@
       var summl = ml;
       var sumvalue = value;
       var sumkcal = kcal;
-      
+  
       var now = new Date().getTime();
       var firstAlcohol = new Date(alcohols[0].uptime);
-      
       var ttest = (((now - firstAlcohol) / 1000) / 3600);
-      
       alcoholTime = alcoholTime - ttest;
     } catch(e) {
       console.log(e.message);
@@ -107,10 +106,13 @@
             <span class="kcal-column">kcal</span>
           </div>
           <ul class="table-body">
-            <% alcohols.forEach(function(alcohol) { %>
+            <% 
+              alcohols.forEach(function(alcohol) { 
+              displayId++; 
+            %>
               <li  class="bgc <% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
                 <div class="item-data">
-                  <span class="id-column"><%= alcohol.id %></span>
+                  <span class="id-column"><%= displayId %></span>
                   <span class="type-column"><%= alcohol.type %></span>
                   <span class="ml-column"><%= alcohol.ml %></span>
                   <span class="value-column"><%= alcohol.value %></span>

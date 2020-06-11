@@ -14,50 +14,50 @@
         <p>種類</p>
         <div class="type-wrapper">
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ビール" id="beer" onchange="onRadioButtonChange();">
-            <label for="beer">
+            <input type="radio" name="alcoholName" value="ビール" id="beer">
+            <label for="beer" onclick="onRadioButtonChange('5');changeCheckbox('350ml');averageKcal('150')">
               <img class="register-img" src="../images/beer.jpg">
               <span>ビール</span>
             </label>
           </div>
           <div class="wrapper">
             <input type="radio" name="alcoholName" value="チューハイ" id="chuhai">
-            <label for="chuhai">
+            <label for="chuhai" onclick="changeCheckbox('350ml')">
               <img class="register-img" src="../images/chuhai.jpg">
               <span>チューハイ</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="日本酒" id="nihonshu" onchange="onRadioButtonChange();">
-            <label for="nihonshu">
+            <input type="radio" name="alcoholName" value="日本酒" id="nihonshu">
+            <label for="nihonshu" onclick="onRadioButtonChange('15');changeCheckbox('180ml');averageKcal('190')">
               <img class="register-img" src="../images/nihonshu.jpg">
               <span>日本酒</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ウイスキー" id="wiskey" onchange="onRadioButtonChange();">
-            <label for="wiskey">
+            <input type="radio" name="alcoholName" value="ウイスキー" id="wiskey" >
+            <label for="wiskey" onclick="onRadioButtonChange('40');changeCheckbox('30ml');averageKcal('70')">
               <img class="register-img" src="../images/wiskey.jpg">
               <span>ウイスキー</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="焼酎" id="shochu" onchange="onRadioButtonChange();">
-            <label for="shochu">
+            <input type="radio" name="alcoholName" value="焼酎" id="shochu" >
+            <label for="shochu" onclick="onRadioButtonChange('25');changeCheckbox('90ml');averageKcal('131')">
               <img class="register-img" src="../images/shochu.jpg">
               <span>焼酎</span>
             </label>
           </div>
           <div class="wrapper">
             <input type="radio" name="alcoholName" value="梅酒" id="umeshu">
-            <label for="umeshu">
+            <label for="umeshu" onclick="changeCheckbox('90ml');averageKcal('156')">
               <img class="register-img" src="../images/umesyu.jpg">
               <span>梅酒</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ワイン" id="wine" onchange="onRadioButtonChange();">
-            <label for="wine">
+            <input type="radio" name="alcoholName" value="ワイン" id="wine" >
+            <label for="wine" onclick="onRadioButtonChange('14');changeCheckbox('120ml');averageKcal('120')">
               <img class="register-img" src="../images/wine.jpg">
               <span>ワイン</span>
             </label>
@@ -90,17 +90,24 @@
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="ml" value="110" id="110ml">
-            <label class="register-ml"  for="110ml">
+            <input type="radio" name="ml" value="90" id="90ml">
+            <label class="register-ml"  for="90ml">
               <img class="register-img" src="../images/110ml.jpg">
-              <span>110ml<p>[焼酎:0.6合]</p></span>
+              <span>90ml<p>[焼酎:ロック、<br>梅酒:ロック]</p></span>
+            </label>
+          </div>
+          <div class="wrapper">
+            <input type="radio" name="ml" value="120" id="120ml">
+            <label class="register-ml"  for="120ml">
+              <img class="register-img" src="">
+              <span>120ml<p>[ワイン:一杯]</p></span>
             </label>
           </div>
           <div class="wrapper">
             <input type="radio" name="ml" value="180" id="180ml">
             <label class="register-ml"  for="180ml">
               <img class="register-img" src="../images/180ml.jpg">
-              <span>180ml<p>[ワイン:一杯、<br>日本酒:一合]</p></span>
+              <span>180ml<p>[日本酒:一合]</p></span>
             </label>
           </div>
           <div class="wrapper">
@@ -131,15 +138,17 @@
 
       <div class="alcohol-kcal">
         <p>カロリー</p>
-        <input type="text" name="alcoholKcal"> kcal
+        <input type="text" name="alcoholKcal" id="avgkcal"> kcal
       </div>
 
 
       <input type="submit" class="button register-button" value="登録" >
       <a href="/top" class="button return">もどる</a>
     </form>
-
-    
+    <div class="explanation">
+      <p>(参考)</p>
+      <a href="https://zunny.jp/00003169">https://zunny.jp/00003169</a>
+    </div>
     <footer></footer>
     <script src="../scripts/script.js"></script>
   </body>
