@@ -9,12 +9,7 @@
   <body>
     <header class="list-header">飲んだものたち</header>
     <main>
-      <%
       
-        var testSumMl = 0;
-        var testSumValue = 0;
-        var testSumKcal = 0;
-      %>
       <div class="list-container">
         <%
           var alcoholList = {};
@@ -24,20 +19,21 @@
             alcoholList[sta].push(i);
           });
           var key = Object.keys(alcoholList);
-          console.log(alcoholList[key[0]]);
         %>
         <div class="index-table-wrapper">
           <% for(var i = 0; i < key.length; i++) { 
               var datestr = key[i];
               var date = new Date(datestr);
+              date.setHours(date.getHours() + 9);
+              var listName = 'name' + i;
           %>
-            <div class="alcohol-list">
+            <div class="alcohol-list"  onclick="clickBtn('<%= i %>')">
               <div>
                 <%= date.getMonth()%>月<%= date.getDate()%>日<%= date.getHours() %>時<%= date.getMinutes() %>分
               </div>
-              <div class="plus"></div>
+              <div class="plus" id="plus<%= i %>">+</div>
             </div>
-            <div class="list-wrapper" >
+            <div class="list-wrapper" id="list<%= i %>">
               <div class="table-head">
                 <span class="id-column">ID</span>
                 <span class="type-column">種類</span>
@@ -46,6 +42,11 @@
                 <span class="kcal-column">kcal</span>
               </div>
               <ul class="table-body">
+                <%
+                  var testSumMl = 0;
+                  var testSumValue = 0;
+                  var testSumKcal = 0;
+                %>
                 <% alcoholList[key[i]].forEach(function(test) { %>
                   <li>
                     <div class="item-data">
@@ -81,5 +82,6 @@
 
       <a href="/" class="button return">もどる</a>
     </main>
+    <script src="../scripts/script.js"></script>
   </body>
 </html>

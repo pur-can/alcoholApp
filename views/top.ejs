@@ -34,6 +34,7 @@
       
       var now = new Date().getTime();
       var firstAlcohol = new Date(alcohols[0].uptime);
+      
       var ttest = (((now - firstAlcohol) / 1000) / 3600);
       
       alcoholTime = alcoholTime - ttest;
@@ -78,7 +79,7 @@
           <p>泥酔期</p>
           <img src="../images/deisui.png">
         <% } else { %>
-          <p></p>
+          <p>昏睡期</p>
           <img src="../images/black.png">
         <% } %>
       </div>
@@ -88,8 +89,8 @@
         <span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %>
         </span>時間
       </p>
-      <% try { %>
-        <% console.log(firstAlcohol.getDate()); %>
+      <% try {
+          firstAlcohol.setHours(firstAlcohol.getHours() + 9); %>
         <p>
         （<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)
         </p>

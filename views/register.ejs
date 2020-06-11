@@ -9,12 +9,12 @@
   </head>
   <body>
     <header>登録</header>
-    <form action="/create" method="post" class="alcohol-form">
+    <form action="/create" method="post" class="alcohol-form" name="form1">
       <div class="alcohol-type">
         <p>種類</p>
         <div class="type-wrapper">
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ビール" id="beer">
+            <input type="radio" name="alcoholName" value="ビール" id="beer" onchange="onRadioButtonChange();">
             <label for="beer">
               <img class="register-img" src="../images/beer.jpg">
               <span>ビール</span>
@@ -28,28 +28,35 @@
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="日本酒" id="nihonshu">
+            <input type="radio" name="alcoholName" value="日本酒" id="nihonshu" onchange="onRadioButtonChange();">
             <label for="nihonshu">
               <img class="register-img" src="../images/nihonshu.jpg">
               <span>日本酒</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ウイスキー" id="wiskey">
+            <input type="radio" name="alcoholName" value="ウイスキー" id="wiskey" onchange="onRadioButtonChange();">
             <label for="wiskey">
               <img class="register-img" src="../images/wiskey.jpg">
               <span>ウイスキー</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="焼酎" id="shochu">
+            <input type="radio" name="alcoholName" value="焼酎" id="shochu" onchange="onRadioButtonChange();">
             <label for="shochu">
               <img class="register-img" src="../images/shochu.jpg">
               <span>焼酎</span>
             </label>
           </div>
           <div class="wrapper">
-            <input type="radio" name="alcoholName" value="ワイン" id="wine">
+            <input type="radio" name="alcoholName" value="梅酒" id="umeshu">
+            <label for="umeshu">
+              <img class="register-img" src="../images/umesyu.jpg">
+              <span>梅酒</span>
+            </label>
+          </div>
+          <div class="wrapper">
+            <input type="radio" name="alcoholName" value="ワイン" id="wine" onchange="onRadioButtonChange();">
             <label for="wine">
               <img class="register-img" src="../images/wine.jpg">
               <span>ワイン</span>
@@ -114,7 +121,7 @@
       </div>
       <div class="alcohol-percent">
         <p>度数</p>
-        <input type="text" name="alcoholPercent"> %
+        <input type="text" name="alcoholPercent" id="target"> %
       </div>
 
       <div class="alcohol-value">
@@ -134,5 +141,6 @@
 
     
     <footer></footer>
+    <script src="../scripts/script.js"></script>
   </body>
 </html>
