@@ -32,17 +32,22 @@ footer {
 }
 
 .top-head > div {
-  padding-left: 10px;
+  padding-top: 10px;
   font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
 }
 .tosetting {
   display: inline-block;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 .fa-cog {
   color: #f0f0f0;
-  margin-right: 30px;
   font-size: 30px;
+}
+.starttimedisplay {
+  font-size: 14px;
 }
 
 .add {
@@ -112,9 +117,11 @@ footer {
 .main2 > p {
   text-align: center;
 }
-.main2p > span {
+.timebig {
   vertical-align: -4px;
-  padding-left: 10px;
+}
+.main2p > span {
+  padding-right: 5px;
 }
 
 .explanation {
@@ -129,6 +136,10 @@ footer {
 .top-form {
   display: flex;
   justify-content: space-evenly;
+}
+
+.wordcheck {
+  text-align: center;
 }
 
 /* 登録============================================================== */
@@ -185,6 +196,7 @@ input[type=radio] {
   width: 90px;
   height: 90px;
   background-color: white ;
+  object-fit: cover;
 }
 .wrapper {
   padding: 5px;
@@ -322,12 +334,13 @@ input[type=text] {
 }
 /* 設定＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .setting-border {
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   border-bottom: 1px solid  #dadfe6;
 }
 
 .weight-main {
-  margin-top: 40px;
+  margin-top: 30px;
   text-align: center;
 }
 .tips {

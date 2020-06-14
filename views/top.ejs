@@ -42,22 +42,35 @@
   %>
   <body class="<% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
     <header class="top-head <% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
+      <a href="/setting" class="tosetting"><i class="fas fa-cog"></i></a>
       <div>
-        <a href="/setting" class="tosetting"><i class="fas fa-cog"></i></a><span id="header-span">今回の飲酒記録</span>
+        <span id="header-span">今回の飲酒記録</span>
+        <p class="starttimedisplay">
+          <% try{ 
+            var cheersTime = alcohols[0].start;
+            cheersTime.setHours(cheersTime.getHours() + 9); 
+          %>
+          <% console.log(cheersTime); %>
+            -<%= cheersTime.getDate() %>日
+            <%= cheersTime.getHours() %>時
+            <%= cheersTime.getMinutes() %>分 CHEERS-
+          <% }  catch(e) { console.log(e.message); } %>
+        </p>
       </div>
+      
       <a href="/register" class="add">追加 +</a>
     </header>
 
     <section class="main1">
       <div class="content"> 
         <div>
-          <p>総飲酒量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= summl %></span> ml</p></p>
+          <p id="change1">総飲酒量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= summl %></span> ml</p></p>
         </div>
         <div>
-          <p>総額<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumvalue %></span> 円</p></p>
+          <p id="change2">総額<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumvalue %></span> 円</p></p>
         </div>
         <div>
-          <p>総カロリー量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumkcal %></span> kcal</p></p>
+          <p id="change3">総カロリー量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumkcal %></span> kcal</p></p>
         </div>
       </div>
       <div class="img">
@@ -81,9 +94,9 @@
     </section>
 
     <section class="main2">
-      <p class="main2p">アルコールが抜けるまで…約
-        <span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %>
-        </span>時間
+      <p class="main2p"><span id="change4">アルコールが抜けるまで…約</span>
+        <span class="timebig big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %>
+        </span><span id="change5">時間</span>
       </p>
       <% try {
           firstAlcohol.setHours(firstAlcohol.getHours() + 9); %>
@@ -128,13 +141,18 @@
     </section>
     
     <ul class="explanation">
-      <li>※一時間に分解できるアルコール量は<span>(体重（kg）x 0.1)</span>、分解にかかる時間は<span>(摂取した純アルコール量(g)/ 一時間に分解できるアルコール量)</span>で計算しています。</li>
-      <li>※酔いの状態を計るためのアルコール血中濃度は<span>(アルコール度数(%)x 容量(ml)/ (体重(kg)x 833))</span>で計算しています。</li>
+      <li id="change6">※一時間に分解できるアルコール量は<span>(体重（kg）x 0.1)</span>、分解にかかる時間は<span>(摂取した純アルコール量(g)/ 一時間に分解できるアルコール量)</span>で計算しています。</li>
+      <li id="change7">※酔いの状態を計るためのアルコール血中濃度は<span>(アルコール度数(%)x 容量(ml)/ (体重(kg)x 833))</span>で計算しています。</li>
     </ul>
     <div class="top-form">
-      <form action="/timeend" method="post"><input type="submit" class="button register-button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散"></form>
+      <form action="/timeend" method="post"><input type="submit" class="button register-button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散" id="change8"></form>
       <form action="/" method="get"><input type="submit" class="button register-button to-top <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="TOP"></form>
     </div>
+    <footer>
+      <form name="form3" class="wordcheck">
+        <input type="checkbox" name="wordsetting" onchange="wordSetting()">English
+      </form>
+    </footer>
     <script src="../scripts/script.js"></script>
   </body>
 </html>

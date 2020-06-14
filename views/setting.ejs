@@ -16,7 +16,7 @@
           
         </li>
       </ul>
-      <form action="/set" method="post" name="settingform" onsubmit="wordSetting()">
+      <form action="/set" method="post" name="settingform" >
         <ul>
           <li>体重設定
             <div class="setting-border">
@@ -25,8 +25,8 @@
               <input type="checkbox" name="weightdisplay" onchange="weightDisplay('<%= nowWeight %>')">設定されている体重を表示する
             </div>
           </li>
-          <li>言語設定
-            <input type="checkbox" name="wordsetting">English
+          <li>
+            
           </li>
         </ul>
         <input type="submit" class="button register-button" value="変更" >
