@@ -9,6 +9,7 @@
   </head>
   <body>
     <header>登録</header>
+
     <form action="/create" method="post" class="alcohol-form" name="form1">
       <div class="alcohol-type">
         <p>種類</p>
@@ -22,7 +23,7 @@
           </div>
           <div class="wrapper">
             <input type="radio" name="alcoholName" value="チューハイ" id="chuhai">
-            <label for="chuhai" onclick="changeCheckbox('350ml')">
+            <label for="chuhai" onclick="onRadioButtonChange('5');changeCheckbox('350ml');averageKcal('')">
               <img class="register-img" src="../images/chuhai.jpg">
               <span>チューハイ</span>
             </label>
@@ -50,7 +51,7 @@
           </div>
           <div class="wrapper">
             <input type="radio" name="alcoholName" value="梅酒" id="umeshu">
-            <label for="umeshu" onclick="changeCheckbox('90ml');averageKcal('156')">
+            <label for="umeshu" onclick="onRadioButtonChange('');changeCheckbox('90ml');averageKcal('156')">
               <img class="register-img" src="../images/umesyu.jpg">
               <span>梅酒</span>
             </label>
@@ -64,7 +65,7 @@
           </div>
           <div class="wrapper">
             <input type="radio" name="alcoholName" value="その他" id="etc">
-            <label for="etc">
+            <label for="etc" onclick="onRadioButtonChange('');averageKcal('')">
               <img class="register-img" src="../images/etc.png">
               <span>その他</span>
             </label>
@@ -140,15 +141,15 @@
         <p>カロリー</p>
         <input type="text" name="alcoholKcal" id="avgkcal"> kcal
       </div>
-
-
       <input type="submit" class="button register-button" value="登録" >
       <a href="/top" class="button return">もどる</a>
     </form>
+
     <div class="explanation">
       <p>(参考)</p>
       <a href="https://zunny.jp/00003169">https://zunny.jp/00003169</a>
     </div>
+
     <footer></footer>
     <script src="../scripts/script.js"></script>
   </body>

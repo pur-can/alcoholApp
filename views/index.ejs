@@ -9,7 +9,6 @@
   <body>
     <header class="list-header">飲んだものたち</header>
     <main>
-      
       <div class="list-container">
         <%
           var alcoholList = {};
@@ -21,11 +20,12 @@
           var key = Object.keys(alcoholList);
         %>
         <div class="index-table-wrapper">
-          <% for(var i = 0; i < key.length; i++) { 
-              var datestr = key[i];
-              var date = new Date(datestr);
-              date.setHours(date.getHours() + 9);
-              var listName = 'name' + i;
+          <% 
+            for(var i = 0; i < key.length; i++) { 
+            var datestr = key[i];
+            var date = new Date(datestr);
+            date.setHours(date.getHours() + 9);
+            var listName = 'name' + i;
           %>
             <div class="alcohol-list"  onclick="clickBtn('<%= i %>')">
               <div>
@@ -77,11 +77,10 @@
             </div>
           <% } %>
         </div>
-      
       </div>
-
       <a href="/" class="button return">もどる</a>
     </main>
+    
     <script src="../scripts/script.js"></script>
   </body>
 </html>

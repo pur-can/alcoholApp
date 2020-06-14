@@ -35,11 +35,14 @@ footer {
   padding-left: 10px;
   font-size: 22px;
 }
-
+.tosetting {
+  display: inline-block;
+  padding-left: 10px;
+}
 .fa-cog {
-  color: #FCFFC6;
+  color: #f0f0f0;
   margin-right: 30px;
-  margin-left: 10px;
+  font-size: 30px;
 }
 
 .add {
@@ -57,7 +60,7 @@ footer {
 .main1 {
   padding: 10px 10px 20px 10px;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-around;
 }
 
 .main2 {
@@ -318,6 +321,11 @@ input[type=text] {
   background: transparent;
 }
 /* 設定＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.setting-border {
+  padding-bottom: 20px;
+  border-bottom: 1px solid  #dadfe6;
+}
+
 .weight-main {
   margin-top: 40px;
   text-align: center;
