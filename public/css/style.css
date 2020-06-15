@@ -156,6 +156,9 @@ footer {
   padding: 0 0 20px 0;
   margin: 0 10px;
 }
+#register-header {
+  font-weight: bold;
+}
 
 .type-wrapper,
 .ml-wrapper {
@@ -469,8 +472,8 @@ input[type=text] {
 .list-header {
   height: 70px;
   width: 100%;
-  background: linear-gradient(rgba(51, 48, 48, 0.829), rgba(92, 92, 92, 0.829));
-  box-shadow: 1px 0 3px 3px rgba(92, 92, 92, 0.829);
+  background: linear-gradient(rgba(52, 41, 68, 0.8), rgba(82, 78, 126, 0.8));
+  box-shadow: 1px 0 3px 3px rgba(82, 78, 126, 0.8);
   margin: 0;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -479,6 +482,7 @@ input[type=text] {
   position: fixed;
   z-index: 10;
 }
+
 
 .list-container {
   padding-top: 70px;
@@ -492,14 +496,29 @@ input[type=text] {
 .alcohol-list {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(rgb(95, 161, 126), rgb(99, 177, 144));
+  background: rgb(129, 218, 230);
   border-radius: 2px 2px 0 0;
-  height: 44px;
+  height: 50px;
   font-size: 16px;
-  line-height: 46px;
+  line-height: 52px;
   color: #ffffff;
-  padding-left: 20px;
+  padding-left: 30px;
   padding-right: 10px;
+}
+.blue {
+  background: rgb(130, 175, 235);
+}
+.violet {
+  background: rgb(194, 131, 231);
+}
+.bluepink {
+  background: rgb(219, 120, 189);
+}
+.pink {
+  background: rgb(255, 97, 163);
+}
+.red {
+  background: rgb(236, 28, 28);
 }
 .plus {
   margin-right: 10px;
@@ -507,6 +526,10 @@ input[type=text] {
   font-size: 20px;
   font-weight: bold;
   font-family:sans-serif;
+}
+
+.index-head {
+  background-color: rgb(219, 212, 212);
 }
 
 .bgc:nth-child(odd) {
