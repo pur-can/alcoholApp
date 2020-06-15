@@ -103,7 +103,7 @@ function exchangeWordRegister() {
   if(exchangeRegister.checked) {
     registerTranslate[0].textContent = "REGISTER";
     registerTranslate[1].textContent = "TYPE";
-    registerTranslate[2].textContent = "AMOUNT";
+    registerTranslate[2].textContent = "QUANTITY";
     registerTranslate[3].textContent = "ALCOHOL PERCENT";
     registerTranslate[4].textContent = "PRICE";
     registerTranslate[5].textContent = "CALORIE";
