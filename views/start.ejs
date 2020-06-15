@@ -8,7 +8,8 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
   </head>
-  <body>
+  <body onload="startImgDisplay()">
+    
     <header class="start-header">AlcoholRecorder</header>
     <main class="start">
       <div class="start-main">
@@ -16,10 +17,25 @@
         <img src="../images/topuga2.jpg" class="topuga2">
       </div>
       <section class="start-buttons">
-        <form action="/timestart" method="post"><input type="submit" class="start-button kanpai" value="乾杯！"></form>
+        <div class="start-imgs">
+          <img src="../images/highball.png" class="start-img highballimg">
+          <img src="../images/whisky_glass.png" class="start-img whiskeyimg">
+          <img src="../images/bourbon.png" class="start-img bourbonimg">
+        </div>
+        <% try{ %>
+          <form action="/timestart" method="post">
+            <% if(end[0].end === null) { %> 
+              <input type="submit" class="start-button kanpai kanpainow" value="乾杯中">
+            <% } else { %>
+              <input type="submit" class="start-button kanpai" value="乾杯！">
+            <% } %>
+          </form>
+        <% } catch(e){ %>
+          <form action="/timestart" method="post"><input type="submit" class="start-button kanpai" value="乾杯！"></form>
+        <% } %>
         <form action="/index" method="get"><input type="submit" class="start-button list-button" value="一覧"></form>
       </section>
     </main>
-    
+    <script src="../scripts/script.js"></script>
   </body>
 </html>

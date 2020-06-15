@@ -79,7 +79,7 @@ const registerTranslate = [
   document.getElementById('register-beer'),
   document.getElementById('register-chuhai'),
   document.getElementById('register-nihonshu'),
-  document.getElementById('register-wiskey'),
+  document.getElementById('register-whiskey'),
   document.getElementById('register-shochu'),
   document.getElementById('register-umeshu'),
   document.getElementById('register-wine'),
@@ -111,13 +111,13 @@ function exchangeWordRegister() {
     registerTranslate[7].textContent = "beer";
     registerTranslate[8].textContent = "chuhai";
     registerTranslate[9].textContent = "sake";
-    registerTranslate[10].textContent = "wiskey";
+    registerTranslate[10].textContent = "whiskey";
     registerTranslate[11].textContent = "shochu";
     registerTranslate[12].textContent = "plum wine";
     registerTranslate[13].textContent = "wine";
     registerTranslate[14].textContent = "other";
-    registerTranslate[15].innerHTML = "[wiskey:<br>single]";
-    registerTranslate[16].innerHTML = "[wiskey:<br>double]";
+    registerTranslate[15].innerHTML = "[whiskey:<br>single]";
+    registerTranslate[16].innerHTML = "[whiskey:<br>double]";
     registerTranslate[17].innerHTML = "[shochu:over<br>plum wine:over]";
     registerTranslate[18].innerHTML = "[wine: a glass]";
     registerTranslate[19].innerHTML = "[sake: a glass]";
@@ -153,4 +153,14 @@ function exchangeWordRegister() {
   }
 }
 
+function startImgDisplay() {
+  const cheersCheck = document.querySelector('.kanpai');
+  const cheersImg = document.querySelector('.start-imgs');
+  console.log(cheersImg);
+  if(cheersCheck.classList.contains('kanpainow')) {
+    cheersImg.style.display = "block";
+  } else {
+    cheersImg.style.display = "none";
+  }
+}
 

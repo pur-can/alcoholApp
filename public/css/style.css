@@ -38,6 +38,13 @@ footer {
   flex-direction: column;
   line-height: normal;
 }
+#header-span {
+  font-weight: bold;
+  border-bottom: 2px dashed #e2e7ec;
+}
+.headspa-height {
+  line-height: 1.8;
+}
 .tosetting {
   display: inline-block;
   padding-left: 20px;
@@ -59,7 +66,7 @@ footer {
   cursor: pointer;
   color: white;
   font-weight: bold;
-  background: linear-gradient(rgb(92, 87, 109), rgb(106, 101, 124));
+  background: linear-gradient(rgb(99, 92, 126), rgb(127, 123, 143));
 }
 
 .main1 {
@@ -104,7 +111,8 @@ footer {
 .img > img {
   width: 200px;
   height: 300px; 
-  background: #FCFFC6;
+  background: #ebebe7;
+  object-fit: cover;
 }
 
 .img > p {
@@ -392,11 +400,42 @@ input[type=text] {
   font-weight: bold;
 }
 
+.start-img {
+  position: absolute;
+}
+
+.start-imgs {
+  display: none;
+}
+
+.highballimg {
+  bottom: 270px;
+  left: 50px;
+  right: 0;
+  z-index: 6;
+  height: 150px;
+  transform: scale(-1, 1) rotate( 15deg );
+}
+.whiskeyimg {
+  bottom: 280px;
+  right: 50px;
+  z-index: 6;
+  height: 100px;
+  transform: rotate( 15deg );
+}
+.bourbonimg {
+  bottom: 310px;
+  right: 55px;
+  z-index: 5;
+  height: 200px;
+  transform: rotate( 12deg );
+}
+
 .kanpai {
   bottom: 100px;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 8;
   height: 70px;
   border-radius: 10px;
   color:#ffffff;
@@ -408,7 +447,11 @@ input[type=text] {
   left: 0px;
 }
 .kanpai:active {
-  background: #da9d1a;
+  filter: brightness(50%);
+}
+
+.kanpainow {
+  background: linear-gradient( #1596ff,  #44caff);
 }
 
 .list-button {
@@ -420,7 +463,7 @@ input[type=text] {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 8;
 }
 /* 一覧＋α＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 .list-header {

@@ -44,17 +44,18 @@
     <header class="top-head <% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
       <a href="/setting" class="tosetting"><i class="fas fa-cog"></i></a>
       <div>
-        <span id="header-span">今回の飲酒記録</span>
-        <p class="starttimedisplay">
           <% try{ 
             var cheersTime = alcohols[0].start;
             cheersTime.setHours(cheersTime.getHours() + 9); 
           %>
-          <% console.log(cheersTime); %>
+          <span id="header-span">今回の飲酒記録</span>
+          <p class="starttimedisplay">
             -<%= cheersTime.getDate() %>日
             <%= cheersTime.getHours() %>時
             <%= cheersTime.getMinutes() %>分 CHEERS-
-          <% }  catch(e) { console.log(e.message); } %>
+          <% }  catch(e) { %>
+            <span id="header-span" class="headspa-height">今回の飲酒記録</span>
+          <% } %>
         </p>
       </div>
       
@@ -82,7 +83,7 @@
           <img src="../images/horoyoi.jpg">
         <% } else if (alcoholism < 0.31) { %>
           <p>酩酊期</p>
-          <img src="../images/meitei.png">
+          <img src="../images/deisui.jpg">
         <% } else if (alcoholism < 0.41) { %>
           <p>泥酔期</p>
           <img src="../images/deisui.png">

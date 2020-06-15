@@ -18,13 +18,15 @@ app.use(express.urlencoded({extended: false}));
 
 //スタート
 app.get('/', function(req, res) {
-  res.render('start.ejs');
+  connection.query('SELECT end FROM timemanagement WHERE start =( SELECT MAX(start) FROM timemanagement)', function(error, results) {
+    console.log(results);
+    res.render('start.ejs', {end: results});
+  });
 });
 
 //記録開始
 app.post('/timestart', function(req, res) {
   connection.query('SELECT end FROM timemanagement WHERE start =( SELECT MAX(start) FROM timemanagement) LIMIT 1', function(error, results) {
-    console.log(results);
     if (results[0].end !== null) {
       console.log('success');
       connection.query('INSERT INTO timemanagement(start) VALUES (CAST(now() as datetime))');
