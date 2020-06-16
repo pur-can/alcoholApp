@@ -28,8 +28,7 @@
             var hh = ("0" + date.getHours()).slice(-2);
             var mi = ("0" + date.getMinutes()).slice(-2);
             var listName = 'name' + i;
-          %>
-          <% var alcoholism = 0;
+            var alcoholism = 0;
             alcoholList[key[i]].forEach(function (alcohol) {
               alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
             });

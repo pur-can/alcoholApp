@@ -170,19 +170,19 @@ footer {
   align-items: center;
 }
 
-.alcohol-type > p,
-.alcohol-ml > p,
-.alcohol-value > p,
-.alcohol-kcal > p,
-.alcohol-percent > p {
+#register-p1,
+#register-p2,
+#register-p3,
+#register-p4,
+#register-p5 {
   padding: 10px 0;
 }
 
-.alcohol-ml > p,
-.alcohol-value > p,
-.alcohol-kcal > p,
-.alcohol-percent > p {
-  border-top: 2px solid rgb(213, 235, 243);
+#register-p2,
+#register-p3,
+#register-p4,
+#register-p5 {
+  border-top: 2px dashed rgb(213, 235, 243);
 }
 
 .alcohol-value,
@@ -510,7 +510,7 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
 .alcohol-list {
   display: flex;
   justify-content: space-between;
-  background: rgb(247, 252, 253);
+  background: rgb(255, 255, 252);
   height: 70px;
   font-size: 18px;
   line-height: 72px;

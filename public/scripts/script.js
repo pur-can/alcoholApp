@@ -22,7 +22,7 @@
     const listHeadStyle = listHead.style;
     if(num.style.display == "block") {
       num.style.display = "none";
-      listHeadStyle.backgroundColor = "rgb(249, 252, 252)";
+      listHeadStyle.backgroundColor = "rgb(255, 255, 252)";
       if(listHead.classList.contains("blue")) {
         listHeadStyle.color = "rgb(143, 179, 226)";
       } else if(listHead.classList.contains("violet")) {
