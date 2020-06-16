@@ -19,7 +19,6 @@ app.use(express.urlencoded({extended: false}));
 //スタート
 app.get('/', function(req, res) {
   connection.query('SELECT end FROM timemanagement WHERE start =( SELECT MAX(start) FROM timemanagement)', function(error, results) {
-    console.log(results);
     res.render('start.ejs', {end: results});
   });
 });

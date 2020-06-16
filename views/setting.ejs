@@ -22,7 +22,10 @@
             <div class="setting-border">
               <input type="text" name="weight" id="nowweight"> kg
               <br>
-              <input type="checkbox" name="weightdisplay" onchange="weightDisplay('<%= nowWeight %>')">設定されている体重を表示する
+              <input type="checkbox" name="weightdisplay" onchange="weightDisplay('<%= nowWeight %>')" id="weightlabel">
+                <label for="weightlabel">
+                  <span class="settingtext">設定されている体重を表示する</span>
+                </label>
             </div>
           </li>
           <li>

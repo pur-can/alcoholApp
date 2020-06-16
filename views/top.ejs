@@ -50,9 +50,10 @@
           %>
           <span id="header-span">今回の飲酒記録</span>
           <p class="starttimedisplay">
-            -<%= cheersTime.getDate() %>日
-            <%= cheersTime.getHours() %>時
-            <%= cheersTime.getMinutes() %>分 CHEERS-
+            -<%= cheersTime.getMonth() %>/
+            <%= cheersTime.getDate() %>  
+            <%= cheersTime.getHours() %>:
+            <%= cheersTime.getMinutes() %> CHEERS-
           <% }  catch(e) { %>
             <span id="header-span" class="headspa-height">今回の飲酒記録</span>
           <% } %>
@@ -84,7 +85,7 @@
         <% }else if (alcoholism < 0.16) { %>
           <p>酩酊初期</p>
           <img src="../images/meitei.png">
-        <% } else if (alcoholism < 0.31) { %>
+        <% } else if (alcoholism < 0.31) { %>  
           <p>酩酊期</p>
           <img src="../images/deisui.jpg">
         <% } else if (alcoholism < 0.41) { %>
@@ -105,7 +106,7 @@
       <% try {
           firstAlcohol.setHours(firstAlcohol.getHours() + 9); %>
         <p>
-        （<%= firstAlcohol.getDate() %>日<%= firstAlcohol.getHours() %>時<%= firstAlcohol.getMinutes() %>分から計算)
+        （<%= firstAlcohol.getMonth() %>/<%= firstAlcohol.getDate() %> <%= firstAlcohol.getHours() %>:<%= firstAlcohol.getMinutes() %>から計算)
         </p>
       <% } catch(e) { } %>
     </section>
@@ -154,7 +155,7 @@
     </div>
     <footer>
       <form name="form3" class="wordcheck">
-        <input type="checkbox" name="wordsetting" onchange="wordSetting()">English
+        <input type="checkbox" name="wordsetting" onchange="wordSetting()" id="english"><label for="english">  English</label>
       </form>
     </footer>
     <script src="../scripts/script.js"></script>
