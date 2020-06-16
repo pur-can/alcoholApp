@@ -46,14 +46,16 @@
       <div>
           <% try{ 
             var cheersTime = alcohols[0].start;
-            cheersTime.setHours(cheersTime.getHours() + 9); 
+            cheersTime.setHours(cheersTime.getHours() + 9);
+            var hh = ("0" + cheersTime.getHours()).slice(-2);
+            var mi = ("0" + cheersTime.getMinutes()).slice(-2); 
           %>
           <span id="header-span">今回の飲酒記録</span>
           <p class="starttimedisplay">
             -<%= cheersTime.getMonth() %>/
             <%= cheersTime.getDate() %>  
-            <%= cheersTime.getHours() %>:
-            <%= cheersTime.getMinutes() %> CHEERS-
+            <%= hh; %>:
+            <%= mi; %> CHEERS-
           <% }  catch(e) { %>
             <span id="header-span" class="headspa-height">今回の飲酒記録</span>
           <% } %>
@@ -104,9 +106,12 @@
         </span><span id="change5">時間</span>
       </p>
       <% try {
-          firstAlcohol.setHours(firstAlcohol.getHours() + 9); %>
+          firstAlcohol.setHours(firstAlcohol.getHours() + 9);
+          var fhh = ("0" + firstAlcohol.getHours()).slice(-2);
+          var fmi = ("0" + firstAlcohol.getMinutes()).slice(-2);  
+        %>
         <p>
-        （<%= firstAlcohol.getMonth() %>/<%= firstAlcohol.getDate() %> <%= firstAlcohol.getHours() %>:<%= firstAlcohol.getMinutes() %>から計算)
+        （<%= firstAlcohol.getMonth() %>/<%= firstAlcohol.getDate() %> <%= fhh; %>:<%= fmi %>から計算)
         </p>
       <% } catch(e) { } %>
     </section>

@@ -510,32 +510,39 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
 .alcohol-list {
   display: flex;
   justify-content: space-between;
-  background: rgb(129, 218, 230);
-  height: 50px;
-  font-size: 16px;
-  line-height: 52px;
-  color: #ffffff;
+  background: rgb(247, 252, 253);
+  height: 70px;
+  font-size: 18px;
+  line-height: 72px;
+  color: rgb(129, 218, 230);
+  border-left: solid 8px rgb(129, 218, 230);
+  border-bottom: solid 1px #dbe2e7;
   padding-left: 30px;
   padding-right: 10px;
 }
 .blue {
-  background: rgb(130, 175, 235);
+  color: rgb(130, 175, 235);
+  border-left: solid 8px rgb(113, 167, 238);
 }
 .violet {
-  background: rgb(194, 131, 231);
+  color: rgb(194, 131, 231);
+  border-left: solid 8px rgb(194, 121, 236);
 }
 .bluepink {
-  background: rgb(219, 120, 189);
+  color: rgb(219, 120, 189);
+  border-left: solid 8px rgb(224, 103, 188);
 }
 .pink {
-  background: rgb(255, 97, 163);
+  color: rgb(255, 97, 163);
+  border-left: solid 8px rgb(253, 77, 151);
 }
 .red {
-  background: rgb(236, 28, 28);
+  color: rgb(236, 28, 28);
+  border-left: solid 8px rgb(240, 15, 15);
 }
 .plus {
   margin-right: 10px;
-  color: white;
+  color: rgb(189, 172, 172);
   font-size: 20px;
   font-weight: bold;
   font-family:sans-serif;

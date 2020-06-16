@@ -17,18 +17,52 @@ function averageKcal(kcalnum) {
 function clickBtn(number) {
   const num = document.getElementById('list' + number);
   const minus = document.getElementById('plus' + number);
+  const listHead = document.getElementById('alcohol-listheader' + number);
   if(num.style.display == "block") {
     num.style.display = "none";
+
+    listHead.style.backgroundColor = "rgb(249, 252, 252)";
+    if(listHead.classList.contains("blue")) {
+      listHead.style.color = "rgb(143, 179, 226)";
+    } else if(listHead.classList.contains("violet")) {
+      listHead.style.color = "rgb(207, 147, 241)";
+    } else if(listHead.classList.contains("bluepink")) {
+      listHead.style.color = "rgb(219, 128, 192)";
+    } else if(listHead.classList.contains("pink")) {
+      listHead.style.color = "rgb(245, 115, 169)";
+    } else if(listHead.classList.contains("red")) {
+      listHead.style.color = "rgb(209, 56, 55)";
+    } else {
+      listHead.style.color = "rgb(129, 217, 230)";
+    }
   } else {
     num.style.display = "block"
+
+    listHead.style.color = "white";
+    if(listHead.classList.contains("blue")) {
+      listHead.style.backgroundColor = "rgb(143, 179, 226)";
+    } else if(listHead.classList.contains("violet")) {
+      listHead.style.backgroundColor = "rgb(207, 147, 241)";
+    } else if(listHead.classList.contains("bluepink")) {
+      listHead.style.backgroundColor = "rgb(219, 128, 192)";
+    } else if(listHead.classList.contains("pink")) {
+      listHead.style.backgroundColor = "rgb(245, 115, 169)";
+    } else if(listHead.classList.contains("red")) {
+      listHead.style.backgroundColor = "rgb(209, 56, 56)";
+    } else {
+      listHead.style.backgroundColor = "rgb(129, 217, 230)";
+    }
   }
 
   if(minus.textContent == "+") {
     minus.textContent = "×";
+    minus.style.color = "white";
   } else {
     minus.textContent = "+";
+    minus.style.color = "rgb(189, 172, 172)";
   }
 }
+
 
 function weightDisplay(weight) {
   const weightDisplay = document.settingform.weightdisplay;

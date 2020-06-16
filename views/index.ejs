@@ -25,6 +25,8 @@
             var datestr = key[i];
             var date = new Date(datestr);
             date.setHours(date.getHours() + 9);
+            var hh = ("0" + date.getHours()).slice(-2);
+            var mi = ("0" + date.getMinutes()).slice(-2);
             var listName = 'name' + i;
           %>
           <% var alcoholism = 0;
@@ -33,39 +35,39 @@
             });
           %>
           <% if (alcoholism < 0.05) { %>
-            <div class="alcohol-list" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list" id="alcohol-listheader<%= i %>" onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ 爽快 ]</div>
           <% }else if (alcoholism < 0.11) { %>
-            <div class="alcohol-list blue" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list blue" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ ほろ酔い ]</div>
           <% }else if (alcoholism < 0.16) { %>
-            <div class="alcohol-list violet" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list violet" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ 弱酩酊 ]</div>
           <% } else if (alcoholism < 0.31) { %>
-            <div class="alcohol-list bluepink" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list bluepink" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ 酩酊 ]</div>
           <% } else if (alcoholism < 0.41) { %>
-            <div class="alcohol-list pink" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list pink" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ 泥酔 ]</div>
           <% } else { %>
-            <div class="alcohol-list red" onclick="clickBtn('<%= i %>')">
+            <div class="alcohol-list red" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
               <div>
-                <%= date.getMonth()%>/<%= date.getDate()%> <%= date.getHours() %>:<%= date.getMinutes() %>
+                <%= date.getMonth()%>/<%= date.getDate()%> <%= hh; %>:<%= mi; %>
               </div>
               <div>[ 昏睡 ]</div>
           <% } %>
