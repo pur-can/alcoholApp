@@ -497,7 +497,6 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
   z-index: 10;
 }
 
-
 .list-container {
   padding-top: 70px;
   margin: 0 auto;
@@ -549,7 +548,7 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
 }
 
 .index-head {
-  background-color: rgb(219, 212, 212);
+  background-color: rgb(236, 232, 232);
 }
 
 .bgc:nth-child(odd) {
