@@ -67,17 +67,17 @@
 
     <section class="main1">
       <div class="content"> 
-        <div>
-          <p id="change1">総飲酒量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= summl %></span> ml</p></p>
+        <div class="<% if (alcoholism > 0.40) { %>dead-boxshadow<% } %>">
+          <p id="change1">総飲酒量<p><span class="big <% if (alcoholism > 0.40) { %>dead-color<% } %>"><%= summl %></span> ml</p></p>
         </div>
-        <div>
+        <div class="<% if (alcoholism > 0.40) { %>dead-boxshadow<% } %>">
           <p id="change2">総額<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumvalue %></span> 円</p></p>
         </div>
-        <div>
+        <div class="<% if (alcoholism > 0.40) { %>dead-boxshadow<% } %>">
           <p id="change3">総カロリー量<p><span class="big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><%= sumkcal %></span> kcal</p></p>
         </div>
       </div>
-      <div class="img">
+      <div class="img <% if (alcoholism > 0.40) { %>dead-boxshadow<% } %>">
         <% if (alcoholism === 0) { %>
           <p>しらふ</p>
           <img src="../images/sirahu.jpg">
@@ -100,10 +100,11 @@
       </div>
     </section>
 
-    <section class="main2">
-      <p class="main2p"><span id="change4">アルコールが抜けるまで…約</span>
-        <span class="timebig big <% if (alcoholism > 0.40) { %><%= 'dead-color' %><% } %>"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %>
-        </span><span id="change5">時間</span>
+    <section class="main2 <% if (alcoholism > 0.40) { %>dead-red dead-display<% } %>">
+      <p class="main2p">
+        <span id="change4">アルコールが抜けるまで…約</span>
+        <span class="timebig big"><% alcoholTime = Math.round(alcoholTime * 100) / 100 %><%= alcoholTime %></span>
+        <span id="change5">時間</span>
       </p>
       <% try {
           firstAlcohol.setHours(firstAlcohol.getHours() + 9);
@@ -115,6 +116,14 @@
         </p>
       <% } catch(e) { } %>
     </section>
+
+    <section class="middle">
+      <div class="top-form">
+        <form action="/timeend" method="post"><input type="submit" class="button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散" id="change8"></form>
+      </div>
+      <img src="../images/hiyoko.png">
+    </section>
+
     <section>
       <div class="container">
         <div class="index-table-wrapper">
@@ -154,11 +163,12 @@
       <li id="change6">※一時間に分解できるアルコール量は<span>(体重（kg）x 0.1)</span>、分解にかかる時間は<span>(摂取した純アルコール量(g)/ 一時間に分解できるアルコール量)</span>で計算しています。</li>
       <li id="change7">※酔いの状態を計るためのアルコール血中濃度は<span>(アルコール度数(%)x 容量(ml)/ (体重(kg)x 833))</span>で計算しています。</li>
     </ul>
-    <div class="top-form">
-      <form action="/timeend" method="post"><input type="submit" class="button register-button oaiso <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="解散" id="change8"></form>
-      <form action="/" method="get"><input type="submit" class="button register-button to-top <% if (alcoholism > 0.40) { %><%= 'dead-button' %><% } %>" value="TOP"></form>
+   
+    
+    <div class="top-return">
+      <a href="/" id="returnbutton" class="<% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>"><i class="fas fa-less-than"></i>TOP</a>
     </div>
-    <footer>
+    <footer class="<% if (alcoholism > 0.40) { %><%= 'dead' %><% } %>">
       <form name="form3" class="wordcheck">
         <input type="checkbox" name="wordsetting" onchange="wordSetting()" id="english"><label for="english">  English</label>
       </form>

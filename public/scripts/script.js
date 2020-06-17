@@ -39,7 +39,7 @@
   
     } else {
       num.style.display = "block"
-      listHead.style.color = "white";
+      listHeadStyle.color = "white";
       if(listHead.classList.contains("blue")) {
         listHeadStyle.backgroundColor = "rgb(143, 179, 226)";
       } else if(listHead.classList.contains("violet")) {
@@ -142,7 +142,6 @@
     document.getElementById('register500'),
   ];
   const buttonTranslate = [
-    
     document.getElementById('registerbutton'),
   ];
   
@@ -155,7 +154,7 @@
       registerTranslate[3].textContent = "ALCOHOL PERCENT";
       registerTranslate[4].textContent = "PRICE";
       registerTranslate[5].textContent = "CALORIE";
-      registerTranslate[6].textContent = "RETURN";
+      registerTranslate[6].innerHTML = "<i class='fas fa-less-than'></i>RETURN";
       registerTranslate[7].textContent = "beer";
       registerTranslate[8].textContent = "chuhai";
       registerTranslate[9].textContent = "sake";
@@ -180,7 +179,7 @@
       registerTranslate[3].textContent = "度数";
       registerTranslate[4].textContent = "金額";
       registerTranslate[5].textContent = "カロリー";
-      registerTranslate[6].textContent = "もどる";
+      registerTranslate[6].innerHTML = "<i class='fas fa-less-than'></i>もどる";
       registerTranslate[7].textContent = "ビール";
       registerTranslate[8].textContent = "チューハイ";
       registerTranslate[9].textContent = "日本酒";
