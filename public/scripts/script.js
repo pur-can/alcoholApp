@@ -51,7 +51,7 @@
       } else if(listHead.classList.contains("red")) {
         listHeadStyle.backgroundColor = "rgb(209, 56, 56)";
       } else {
-        listHeadStyle.backgroundColor = "rgb(129, 217, 230)";
+        listHeadStyle.backgroundColor = "rgb(143, 234, 246)";
       }
     }
   
