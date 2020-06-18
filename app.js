@@ -122,5 +122,14 @@ app.get('/index', function (req, res) {
   });
 });
 
+//グラフ
+app.get('/chart', function (req, res) {
+  // connection.query('SET @i := 0');
+  // connection.query('UPDATE alcohols SET id = (@i := @i + 1)');
+  connection.query('SELECT * FROM alcohols' ,function (error, results) {
+    res.render('chart.ejs', {alcohols: results});
+  });
+});
+
 
 app.listen(3000);
