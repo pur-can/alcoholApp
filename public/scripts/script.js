@@ -224,75 +224,46 @@ function chartDisplay() {
   var newSumValueList = [];
   var newSumKcalList = [];
   var newTimeList = [];
-  
-  // var newSumMlList =  summl.map(function(i){
-  //   return i.textContent;
-  // }); 
-  for(let i = 0; i < summl.length; i++) {
-    newSumMlList.push(summl[i].textContent);
-  }
-  for(let i = 0; i < sumvalue.length; i++) {
-    newSumValueList.push(sumvalue[i].textContent);
-  }
-  for(let i = 0; i < sumkcal.length; i++) {
-    newSumKcalList.push(sumkcal[i].textContent);
-  }
+
   for(let i = 0; i < timelist.length; i++) {
+    newSumMlList.push(summl[i].textContent);
+    newSumValueList.push(sumvalue[i].textContent);
+    newSumKcalList.push(sumkcal[i].textContent);
     newTimeList.push(timelist[i].textContent);
   }
- 
-  console.log(newTimeList);
-    var myBarChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: newTimeList,
-        datasets: [
-          {
-            label: '飲酒量',
-            data: newSumMlList,
-            backgroundColor: "rgba(255, 156, 178, 0.5)",
-          }
-        ]
-      }
-      // options: {
-      //   title: {
-      //     display: true,
-      //     text: '統計'
-      //   },
-        // scales: {
-        //   yAxes: [{
-        //     ticks: {
-        //       suggestedMax: 1000,
-        //       suggestedMin: 0,
-        //       stepSize: 10,
-        //       callback: function(value, index, values){
-        //         return  value + "ml";
-        //       }
-        //     }
-        //   }]
-        // },
-      // }
-    });
-    var myBarChart = new Chart(ctxS, {
-      type: 'bar',
-      data: {
-        labels: newTimeList,
-        datasets: [{
-            label: '使った額',
-            data:  newSumValueList,
-            backgroundColor: "rgba(130,201,169,0.5)"
-          }]
-      }
-    });
-    var myBarChart = new Chart(ctxT, {
-      type: 'bar',
-      data: {
-        labels: newTimeList,
-        datasets: [{
-            label: '摂取カロリー',
-            data: newSumKcalList,
-            backgroundColor: "rgba(255,183,76,0.5)"
-          }]
-      }
-    }); 
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: newTimeList,
+      datasets: [{
+        label: '飲酒量',
+        data: newSumMlList,
+        backgroundColor: "rgba(255, 156, 178, 0.5)",
+      }]
+    }
+  });
+
+  var myBarChart2 = new Chart(ctxS, {
+    type: 'bar',
+    data: {
+      labels: newTimeList,
+      datasets: [{
+        label: '使った額',
+        data:  newSumValueList,
+        backgroundColor: "rgba(130,201,169,0.5)"
+      }]
+    }
+  });
+
+  var myBarChart3 = new Chart(ctxT, {
+    type: 'bar',
+    data: {
+      labels: newTimeList,
+      datasets: [{
+        label: '摂取カロリー',
+        data: newSumKcalList,
+        backgroundColor: "rgba(255,183,76,0.5)"
+      }]
+    }
+  }); 
 }

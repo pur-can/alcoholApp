@@ -15,109 +15,38 @@
     <canvas id="myBarChart2"></canvas>
     <canvas id="myBarChart3"></canvas>
     <div class="display-none">
-
-      <div class="list-container">
+      <%
+      var alcoholList = {};
+      alcohols.map(function (i,j) {
+        var sta = i["start"];
+        if(typeof alcoholList[sta]=="undefined") alcoholList[sta]=[];
+        alcoholList[sta].push(i);
+      });
+      var key = Object.keys(alcoholList);
+      
+      for(var i = 0; i < key.length; i++) { 
+        var datestr = key[i];
+        var date = new Date(datestr);
+        date.setHours(date.getHours() + 9);
+      %>
+       
+        <span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span>
         <%
-        var alcoholList = {};
-        alcohols.map(function (i,j) {
-          var sta = i["start"];
-          if(typeof alcoholList[sta]=="undefined") alcoholList[sta]=[];
-          alcoholList[sta].push(i);
-        });
-        var key = Object.keys(alcoholList);
-        %>
-        
-        <div class="index-table-wrapper">
-          <% 
-          for(var i = 0; i < key.length; i++) { 
-            var datestr = key[i];
-            var date = new Date(datestr);
-            date.setHours(date.getHours() + 9);
-            var hh = ("0" + date.getHours()).slice(-2);
-            var mi = ("0" + date.getMinutes()).slice(-2);
-            var listName = 'name' + i;
-            var alcoholism = 0;
-            alcoholList[key[i]].forEach(function (alcohol) {
-              alcoholism += (alcohol.ml * alcohol.percent) / (833 * alcohol.weight);
-            });
-          %>
-          <% if (alcoholism < 0.05) { %>
-            <div class="alcohol-list" id="alcohol-listheader<%= i %>" onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ 爽快 ]</div>
-          <% }else if (alcoholism < 0.11) { %>
-            <div class="alcohol-list blue" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ ほろ酔い ]</div>
-          <% }else if (alcoholism < 0.16) { %>
-            <div class="alcohol-list violet" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ 弱酩酊 ]</div>
-          <% } else if (alcoholism < 0.31) { %>
-            <div class="alcohol-list bluepink" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ 酩酊 ]</div>
-          <% } else if (alcoholism < 0.41) { %>
-            <div class="alcohol-list pink" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ 泥酔 ]</div>
-          <% } else { %>
-            <div class="alcohol-list red" id="alcohol-listheader<%= i %>"  onclick="clickBtn('<%= i %>')">
-              <div><span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span><%= hh; %>:<%= mi; %></div>
-              <div>[ 昏睡 ]</div>
-          <% } %>                       
-              <div class="plus" id="plus<%= i %>">+</div>
-            </div>
-          <div class="list-wrapper" id="list<%= i %>">
-            <div class="table-head index-head">
-              <span class="id-column">ID</span>
-              <span class="type-column">種類</span>
-              <span class="ml-column">ml</span>
-              <span class="value-column">価格</span>
-              <span class="kcal-column">kcal</span>
-            </div>
-            <ul class="table-body">
-              <%
-              var testSumMl = 0;
-              var testSumValue = 0;
-              var testSumKcal = 0;
-              %>
-              <% alcoholList[key[i]].forEach(function(test) { %>
-                <li>
-                  <div class="item-data">
-                    <span class="id-column"><%= test.id %></span>
-                    <span class="type-column"><%= test.type %></span>
-                    <span class="ml-column"><%= test.ml %></span>
-                    <span class="value-column"><%= test.value %></span>
-                    <span class="kcal-column"><%= test.kcal %></span>
-                    <%
-                    testSumMl += test.ml;
-                    testSumValue += test.value;
-                      testSumKcal += test.kcal;
-                      %>
-                    </div>
-                    <div class="item-menu">
-                    <form action="/deleteIndex/<%= test.id %>" method="post">
-                      <input type="submit" value="削除">
-                    </form>
-                  </div>
-                </li>
-                <% }); %>
-                <li class="gokei">
-                  <div><p>総飲酒量<p class="petit"><span class="sum-ml"><%= testSumMl %></span>ml</p></p></div>
-                  <div><p>総額<p class="petit"><span class="sum-value"><%= testSumValue %></span>円</p></p></div>
-                  <div><p>総カロリー<p class="petit"><span class="sum-kcal"><%= testSumKcal %></span>kcal</p></p></div>
-                </li>
-              </ul>
-            </div>
-            <% } %>
-            <div>ml</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="top-return">
-        <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
+        var testSumMl = 0;
+        var testSumValue = 0;
+        var testSumKcal = 0;
+        alcoholList[key[i]].forEach(function(test) { 
+          testSumMl += test.ml;
+          testSumValue += test.value;
+          testSumKcal += test.kcal;    
+        }); %>
+        <span class="sum-ml"><%= testSumMl %></span>
+        <span class="sum-value"><%= testSumValue %></span>
+        <span class="sum-kcal"><%= testSumKcal %></span>
+      <% } %>
+    </div>
+    <div class="top-return">
+      <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
     </div>
       
     <footer></footer>
