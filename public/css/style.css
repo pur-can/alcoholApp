@@ -317,6 +317,9 @@ input[type=text] {
   padding-left: 50px;
   text-decoration: none;
   float: right;
+  color: rgb(146, 146, 170);
+  font-weight: bold;
+  width: 100px;
 }
 .fa-less-than {
   color: rgb(235, 235, 235);
@@ -664,4 +667,8 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
 
 .display-none {
   display: none;
+}
+.chart-header,
+.chart-footer {
+  background: linear-gradient(rgba(83, 66, 109, 0.8), rgba(100, 95, 153, 0.8));
 }

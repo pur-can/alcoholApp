@@ -18,14 +18,20 @@ function chartDisplay() {
     newSumKcalList.push(sumkcal[i].textContent);
     newTimeList.push(timelist[i].textContent);
   }
+
+  if(myBarChart) {
+    myBarChart.destroy();
+    myBarChart2.destroy();
+    myBarChart3.destroy();
+  } 
   var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: newTimeList,
       datasets: [{
-        label: '飲酒量',
+        label: '飲酒量(ml)',
         data: newSumMlList,
-        backgroundColor: "rgba(255, 156, 178, 0.5)",
+        backgroundColor: "#f6465583",
       }]
     }
   });
@@ -35,9 +41,9 @@ function chartDisplay() {
     data: {
       labels: newTimeList,
       datasets: [{
-        label: '使った額',
+        label: '使った額(円)',
         data:  newSumValueList,
-        backgroundColor: "rgba(130,201,169,0.5)"
+        backgroundColor: "#f6b94683"
       }]
     }
   });
@@ -47,9 +53,9 @@ function chartDisplay() {
     data: {
       labels: newTimeList,
       datasets: [{
-        label: '摂取カロリー',
+        label: '摂取カロリー(kcal)',
         data: newSumKcalList,
-        backgroundColor: "rgba(255,183,76,0.5)"
+        backgroundColor: "#3ed69783"
       }]
     }
   }); 

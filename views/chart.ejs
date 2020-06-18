@@ -10,9 +10,10 @@
   </head>
 
   <body onload="chartDisplay()">
-    <header>統計</header>
-    <canvas id="myBarChart"></canvas>
-    <canvas id="myBarChart2"></canvas>
+    <header class="chart-header">統計</header>
+    <br>
+    <canvas id="myBarChart"></canvas><br>
+    <canvas id="myBarChart2"></canvas><br>
     <canvas id="myBarChart3"></canvas>
     <div class="display-none">
       <%
@@ -48,7 +49,7 @@
       <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
     </div>
       
-    <footer></footer>
+    <footer class="chart-footer"></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="../scripts/scriptsecond.js"></script>
   </body>
