@@ -431,11 +431,10 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
   line-height: 70px;
   letter-spacing: 1px;
   font-size: 24px;
-  font-family : 'Hiragino Kaku Gothic Pro';
   font-weight: bold;
   position: fixed;
   z-index: 10;
-  color: rgb(142, 140, 151);
+  color: rgb(173, 171, 182);
   background: white;
   box-shadow: 0 0 3px 1px white;
 } 
@@ -562,6 +561,7 @@ input[type=checkbox]:checked + label:before { content: "\f046"; }
   background: rgb(255, 255, 252);
   height: 70px;
   font-size: 18px;
+  font-family: '游ゴシック';
   line-height: 72px;
   color: rgb(129, 218, 230);
   border-left: solid 8px rgb(109, 211, 224);
