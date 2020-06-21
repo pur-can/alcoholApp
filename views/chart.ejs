@@ -10,47 +10,60 @@
   </head>
 
   <body onload="chartDisplay()">
-    <header class="chart-header">統計</header>
-    <br>
-    <canvas id="myBarChart"></canvas><br>
-    <canvas id="myBarChart2"></canvas><br>
-    <canvas id="myBarChart3"></canvas>
-    <div class="display-none">
-      <%
-      var alcoholList = {};
-      alcohols.map(function (i,j) {
-        var sta = i["start"];
-        if(typeof alcoholList[sta]=="undefined") alcoholList[sta]=[];
-        alcoholList[sta].push(i);
-      });
-      var key = Object.keys(alcoholList);
-      
-      for(var i = 0; i < key.length; i++) { 
-        var datestr = key[i];
-        var date = new Date(datestr);
-        date.setHours(date.getHours() + 9);
-      %>
-        <span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span>
+    <div class="content-wrapper">
+
+      <header class="chart-header">今月の統計</header>
+      <br>
+      <canvas id="myBarChart"></canvas><br>
+      <canvas id="myBarChart2"></canvas><br>
+      <canvas id="myBarChart3"></canvas>
+      <div class="display-none">
         <%
-        var testSumMl = 0;
-        var testSumValue = 0;
-        var testSumKcal = 0;
-        alcoholList[key[i]].forEach(function(test) { 
-          testSumMl += test.ml;
-          testSumValue += test.value;
-          testSumKcal += test.kcal;    
-        }); %>
-        <span class="sum-ml"><%= testSumMl %></span>
-        <span class="sum-value"><%= testSumValue %></span>
-        <span class="sum-kcal"><%= testSumKcal %></span>
-      <% } %>
-    </div>
-    <div class="top-return">
-      <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
-    </div>
+        var alcoholList = {};
+        alcohols.map(function (i,j) {
+          var sta = i["start"];
+          if(typeof alcoholList[sta]=="undefined") alcoholList[sta]=[];
+          alcoholList[sta].push(i);
+        });
+        
+        var key = Object.keys(alcoholList);
+        var todayTime = new Date();
+        todayTime.setMonth(todayTime.getMonth() + 1);
+        
+        for(var i = 0; i < key.length; i++) { 
+          var datestr = key[i];
+          var date = new Date(datestr);
+          date.setHours(date.getHours() + 9);
+          date.setMonth(date.getMonth() + 1);
+
+          if(date.getMonth() !== todayTime.getMonth()) {
+            delete alcoholList[key[i]];
+          } else {  
+        %>
+            <span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span>
+        <%  
+            var testSumMl = 0;
+            var testSumValue = 0;
+            var testSumKcal = 0;
+            alcoholList[key[i]].forEach(function(test) { 
+              testSumMl += test.ml;
+              testSumValue += test.value;
+              testSumKcal += test.kcal;    
+            }); 
+          }
+        %>
+          <span class="sum-ml"><%= testSumMl %></span>
+          <span class="sum-value"><%= testSumValue %></span>
+          <span class="sum-kcal"><%= testSumKcal %></span>
+        <% } %>
+      </div>
+      <div class="top-return">
+        <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
+      </div>
+      <footer class="chart-footer"></footer>
       
-    <footer class="chart-footer"></footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script src="../scripts/scriptsecond.js"></script>
-  </body>
-</html>
+    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+      <script src="../scripts/scriptsecond.js"></script>
+    </body>
+    </html>

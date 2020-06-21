@@ -10,31 +10,34 @@
   </head>
   <body>
     <% var nowWeight = alcohols[0].weight; %>
-    <header>設定</header>
-    <div class="weight-main">
-      <ul>
-        <li>
-          
-        </li>
-      </ul>
-      <form action="/set" method="post" name="settingform" >
+    <div class="content-wrapper">
+
+      <header>設定</header>
+      <div class="weight-main">
         <ul>
-          <li>体重設定
-            <div class="setting-border">
-              <input type="text" name="weight" id="nowweight"> kg
-              <br>
-              <input type="checkbox" name="weightdisplay" onchange="weightDisplay('<%= nowWeight %>')" id="weightlabel">
-                <label for="weightlabel">
-                  <span class="settingtext">設定されている体重を表示する</span>
-                </label>
-            </div>
+          <li>
+            
           </li>
         </ul>
-        <input type="submit" class="button register-button" value="変更" >
-      </form>
-    </div>
-    <div class="top-return">
-      <a href="/top" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
+        <form action="/set" method="post" name="settingform" >
+          <ul>
+            <li>体重設定
+              <div class="setting-border">
+                <input type="text" name="weight" id="nowweight"> kg
+                <br>
+                <input type="checkbox" name="weightdisplay" onchange="weightDisplay('<%= nowWeight %>')" id="weightlabel">
+                  <label for="weightlabel">
+                    <span class="settingtext">設定されている体重を表示する</span>
+                  </label>
+              </div>
+            </li>
+          </ul>
+          <input type="submit" class="button register-button" value="変更" >
+        </form>
+      </div>
+      <div class="top-return">
+        <a href="/top" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
+      </div>
     </div>
     <script src="../scripts/script.js"></script>
   </body>

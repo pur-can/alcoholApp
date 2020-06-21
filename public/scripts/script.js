@@ -7,7 +7,8 @@
   
   function changeCheckbox(idname) {
     const obj = document.getElementById(idname);
-    obj.checked = !obj.checked;
+    // obj.checked = !obj.checked;
+    obj.checked = true;
   }
   
   function averageKcal(kcalnum) {
@@ -153,7 +154,7 @@
       registerTranslate[2].textContent = "QUANTITY";
       registerTranslate[3].textContent = "ALCOHOL PERCENT";
       registerTranslate[4].textContent = "PRICE";
-      registerTranslate[5].textContent = "CALORIE";
+      registerTranslate[5].textContent = "CALORIE PER 100ML";
       registerTranslate[6].innerHTML = "<i class='fas fa-less-than'></i>RETURN";
       registerTranslate[7].textContent = "beer";
       registerTranslate[8].textContent = "chuhai";
@@ -178,7 +179,7 @@
       registerTranslate[2].textContent = "量";
       registerTranslate[3].textContent = "度数";
       registerTranslate[4].textContent = "金額";
-      registerTranslate[5].textContent = "カロリー";
+      registerTranslate[5].textContent = "100mlあたりのカロリー";
       registerTranslate[6].innerHTML = "<i class='fas fa-less-than'></i>もどる";
       registerTranslate[7].textContent = "ビール";
       registerTranslate[8].textContent = "チューハイ";

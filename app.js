@@ -68,7 +68,8 @@ app.get('/register', function (req, res) {
 
 //追加
 app.post('/create', function (req, res) {
-  const alcohol = [req.body.alcoholName, req.body.ml, req.body.alcoholValue, req.body.alcoholKcal, req.body.alcoholPercent];
+  const calKcal = req.body.alcoholKcal * (req.body.ml / 100);
+  const alcohol = [req.body.alcoholName, req.body.ml, req.body.alcoholValue, calKcal, req.body.alcoholPercent];
   connection.query('INSERT INTO alcohols(type, ml, value, kcal, percent, uptime) VALUES (?, CAST(now() as datetime))',
   [alcohol],
   function (error, results) {
