@@ -4,6 +4,7 @@ function chartDisplay() {
   var ctxS = document.getElementById("myBarChart2");
   var ctxT = document.getElementById("myBarChart3");
   var summl = document.querySelectorAll('.sum-ml');
+  
   var sumvalue = document.querySelectorAll('.sum-value');
   var sumkcal = document.querySelectorAll('.sum-kcal');
   var timelist = document.querySelectorAll('.time-list');
@@ -13,7 +14,9 @@ function chartDisplay() {
   var newTimeList = [];
 
   for(let i = 0; i < timelist.length; i++) {
+    console.log(summl[i]);
     newSumMlList.push(summl[i].textContent);
+    
     newSumValueList.push(sumvalue[i].textContent);
     newSumKcalList.push(sumkcal[i].textContent);
     newTimeList.push(timelist[i].textContent);
@@ -24,6 +27,7 @@ function chartDisplay() {
     myBarChart2.destroy();
     myBarChart3.destroy();
   } 
+
   var myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {

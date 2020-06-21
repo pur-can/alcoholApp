@@ -35,9 +35,11 @@
           var date = new Date(datestr);
           date.setHours(date.getHours() + 9);
           date.setMonth(date.getMonth() + 1);
-
+          
           if(date.getMonth() !== todayTime.getMonth()) {
+            
             delete alcoholList[key[i]];
+
           } else {  
         %>
             <span class="time-list"><%= date.getMonth()%>/<%= date.getDate()%></span>
@@ -48,20 +50,20 @@
             alcoholList[key[i]].forEach(function(test) { 
               testSumMl += test.ml;
               testSumValue += test.value;
-              testSumKcal += test.kcal;    
-            }); 
-          }
-        %>
-          <span class="sum-ml"><%= testSumMl %></span>
-          <span class="sum-value"><%= testSumValue %></span>
-          <span class="sum-kcal"><%= testSumKcal %></span>
-        <% } %>
+              testSumKcal += test.kcal; 
+            });
+        %> 
+            <span class="sum-ml"><%= testSumMl %></span>
+            <span class="sum-value"><%= testSumValue %></span>
+            <span class="sum-kcal"><%= testSumKcal %></span>
+        <% } }%> 
+
       </div>
       <div class="top-return">
         <a href="/index" id="returnbutton" class="return-lt"><i class="fas fa-less-than"></i>もどる</a>
       </div>
       <footer class="chart-footer"></footer>
-      
+
     </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
       <script src="../scripts/scriptsecond.js"></script>
